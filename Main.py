@@ -87,11 +87,11 @@ def main():
     # dgs
     def escolher_dg(dg):
         if dg == 1:
-            # iniciar(1)
-            print("1")
+            iniciar(1)
+            # print("1")
         if dg == 2:
-            # iniciar(2)
-            print("2")
+            iniciar(2)
+            # print("2")
 
     botao1 = custom.CTkButton(janela, text="dxd fogo", fg_color="red", font=("Roboto", 12, "bold"), command=lambda:escolher_dg(1))
     botao1.place(x= 210, y = 15)
@@ -100,3 +100,5 @@ def main():
     botao2.place(x= 210, y=55)
 
     janela.mainloop()
+
+main()

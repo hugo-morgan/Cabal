@@ -21,3 +21,10 @@ def over():
     pdi.press('6')
     pdi.press('7')
     pdi.press('8')
+def esquiva():
+    pdi.press('9')
+    time.sleep(1)
+
+def desliza():
+    pdi.press('0')
+    time.sleep(1)
