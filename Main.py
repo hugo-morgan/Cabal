@@ -29,10 +29,19 @@ def center(win):
     # This seems to draw the window frame immediately, so only call deiconify()
     # after setting correct window position
     win.deiconify()
+'''
 
-# Definir configurações gerais para o macro funcionar, como tamanho de letra,
-# fonte, tipo de câmera, etc.
-# Visao: passaro
+Definir configurações gerais para o macro funcionar, como tamanho de letra,
+fonte, tipo de câmera, etc.
+Visao: passaro
+DU: 
+1a skill: cacador falcao
+2a skill: chamas do infinito
+3a skill: corte relampagado
+4 skill: tempestade mortal
+
+'''
+
 
 def iniciar(dg):
     if dg == 1:
@@ -100,5 +109,3 @@ def main():
     botao2.place(x= 210, y=55)
 
     janela.mainloop()
-
-main()

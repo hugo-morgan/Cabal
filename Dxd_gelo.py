@@ -127,10 +127,19 @@ def play(n):
         pdi.press('space')
         pdi.press('space')
         sleep(3)
+
+        py.moveTo(960, 0)
+        try:
+            x,y = localiza('img\\mancha.png', 0.9)
+            py.moveTo(x,y+50)
+            sk.esquiva()
+        except:
+            pass
+
         py.moveTo(960, 0)
         try:
             x,y = localiza('img\\2pilar.png', 0.8)
-            print("Encontrou 1 Pilar")
+            print("Encontrou 2 Pilar")
             clickE(x, y)
             sleep(2)
         except:
@@ -173,6 +182,7 @@ def play(n):
                                     quit()
 
         missao()
+
         py.moveTo(960, 0)
         try:
             x,y = localiza('img\\mancha.png', 0.9)
@@ -256,7 +266,7 @@ def play(n):
         clickE(734, 554) # tesouro de guilda
         clickE(370, 552) # dado
         clickE(321, 554) # sai da dg
+        sleep(2)
 
-
-
+        print(f"Entrada número: {i+1}")
         i += 1
