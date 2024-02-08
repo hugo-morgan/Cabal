@@ -185,96 +185,98 @@ clickE(955, 556) # click personagem
 # sk.desliza()
 # py.moveTo(1318, 561)
 # sk.esquiva()
-
-
-mobsVivos = True
-while mobsVivos:
-    try:
-        x, y = localiza('img\\hpBoss.png', 0.9)
-        killBoss()
-        mobsVivos = False
-    except:
-        print("Mobs vivos ainda!")
-        pdi.press('z')
-        sk.dano()
-
-pdi.press('z')
-sk.dano()
-pdi.press('space')
-pdi.press('space')
-sleep(3)
-
-try:
-    x,y = localiza('img\\2pilar.png', 0.9)
-    print("Encontrou 1 Pilar")
-    clickE(x, y)
-    sleep(2)
-except:
-    try:
-        x, y = localiza('img\\2_0pilar.png', 0.9)
-        print("Encontrou 2 Pilar")
-        clickE(x, y)
-        sleep(2)
-    except:
-        try:
-            x, y = localiza('img\\2_1pilar.png', 0.9)
-            print("Encontrou 2 Pilar")
-            clickE(x, y)
-            sleep(2)
-        except:
-            try:
-                x, y = localiza('img\\2_2pilar.png', 0.9)
-                print("Encontrou 2 Pilar")
-                clickE(x, y)
-                sleep(2)
-            except:
-                try:
-                    x, y = localiza('img\\2_3pilar.png', 0.9)
-                    print("Encontrou 2 Pilar")
-                    clickE(x, y)
-                    sleep(2)
-                except:
-                    try:
-                        x, y = localiza('img\\2_4pilar.png', 0.9)
-                        print("Encontrou 2 Pilar")
-                        clickE(x, y)
-                        sleep(2)
-                    except:
-                        quit()
-
-missao()
-
-x,y = localiza('img\\mancha.png', 0.9)
-py.moveTo(x,y+50)
+#
+#
+# mobsVivos = True
+# while mobsVivos:
+#     try:
+#         x, y = localiza('img\\hpBoss.png', 0.9)
+#         killBoss()
+#         mobsVivos = False
+#     except:
+#         print("Mobs vivos ainda!")
+#         pdi.press('z')
+#         sk.dano()
+#
+# pdi.press('z')
+# sk.dano()
+# pdi.press('space')
+# pdi.press('space')
+# sleep(3)
+#
+# try:
+#     x,y = localiza('img\\2pilar.png', 0.9)
+#     print("Encontrou 1 Pilar")
+#     clickE(x, y)
+#     sleep(2)
+# except:
+#     try:
+#         x, y = localiza('img\\2_0pilar.png', 0.9)
+#         print("Encontrou 2 Pilar")
+#         clickE(x, y)
+#         sleep(2)
+#     except:
+#         try:
+#             x, y = localiza('img\\2_1pilar.png', 0.9)
+#             print("Encontrou 2 Pilar")
+#             clickE(x, y)
+#             sleep(2)
+#         except:
+#             try:
+#                 x, y = localiza('img\\2_2pilar.png', 0.9)
+#                 print("Encontrou 2 Pilar")
+#                 clickE(x, y)
+#                 sleep(2)
+#             except:
+#                 try:
+#                     x, y = localiza('img\\2_3pilar.png', 0.9)
+#                     print("Encontrou 2 Pilar")
+#                     clickE(x, y)
+#                     sleep(2)
+#                 except:
+#                     try:
+#                         x, y = localiza('img\\2_4pilar.png', 0.9)
+#                         print("Encontrou 2 Pilar")
+#                         clickE(x, y)
+#                         sleep(2)
+#                     except:
+#                         quit()
+#
+# missao()
+#
+# x,y = localiza('img\\mancha.png', 0.9)
+# py.moveTo(x,y+50)
+# sk.esquiva()
+#
+# py.moveTo(553, 957)
+# sk.esquiva()
+# py.moveTo(674, 949)
+# sk.esquiva()
+# py.moveTo(177, 836)
+# sk.desliza()
+# py.moveTo(190, 742)
+# sk.desliza()
+# py.moveTo(1128, 1006)
+# sk.desliza()
+# py.moveTo(1128, 1006)
+# sk.esquiva()
+# py.moveTo(437, 903)
+# sk.desliza()
+# py.moveTo(207, 677)
+# sk.desliza()
+# py.moveTo(262, 969)
+# sk.desliza()
+#
+# pdi.press('z')
+# pdi.press('3')
+# sleep(5)
+# killBoss()
+# pdi.press('z')
+# pdi.press('3')
+# sleep(4)
+# pdi.press('space')
+# pdi.press('space')
+# sleep(1)
+# pdi.press('space')
+py.moveTo(667, 979)
 sk.esquiva()
-
-py.moveTo(553, 957)
-sk.esquiva()
-py.moveTo(674, 949)
-sk.esquiva()
-py.moveTo(177, 836)
-sk.desliza()
-py.moveTo(190, 742)
-sk.desliza()
-py.moveTo(1128, 1006)
-sk.desliza()
-py.moveTo(1128, 1006)
-sk.esquiva()
-py.moveTo(437, 903)
-sk.desliza()
-py.moveTo(207, 677)
-sk.desliza()
-py.moveTo(262, 969)
-sk.desliza()
-
-pdi.press('z')
-pdi.press('3')
-sleep(5)
-killBoss()
-pdi.press('z')
-pdi.press('3')
-sleep(4)
-pdi.press('space')
-pdi.press('space')
-sleep(1)
-pdi.press('space')
