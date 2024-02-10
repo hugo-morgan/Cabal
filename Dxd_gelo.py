@@ -19,7 +19,7 @@ def killGate():
     hp = 1
     while hp == 1:
         try:
-            x, y = localiza('img\\dxd_gelo\\hpPortao.png', 0.9)
+            x, y = localiza('img\\hpPortao.png', 0.9)
             sk.dano()
         except ImageNotFoundException:
             print(f"Portao morto.")
