@@ -1,19 +1,61 @@
 from time import sleep
+import time
 import pyautogui as py
 from pyautogui import ImageNotFoundException
 import pydirectinput as pdi
 import skills as sk
 import keyboard as kb
 
-def killBoss():
-    hp = 1
-    while hp == 1:
-        try:
-            x, y = localiza('img\\hpBoss.png', 0.9)
-            sk.dano()
-        except ImageNotFoundException:
-            print(f"Mob morto.")
-            hp = 0
+def killBoss(bm=""):
+    if bm == 'bm2': # 90s de BM2
+        sk.ligar_bm2()
+        start = time.time()
+        hp = 1
+        bm2 = True
+        print("BM2 ativa")
+        while hp == 1:
+            end = time.time()
+            tempo_bm = end - start
+
+            if tempo_bm <= 10.00:
+                try:
+                    x, y = localiza('img\\hpBoss.png', 0.9)
+                    sk.bm2_atack()
+                    sk.defesa()
+                    sk.potar()
+                except ImageNotFoundException:
+                    print(f"Mob morto.")
+                    hp = 0
+            elif tempo_bm > 10.00 and bm2 == True:
+                clickD(192,116) # Desliga BM
+                bm2 = False
+                print("BM2 finalizada")
+                try:
+                    x, y = localiza('img\\hpBoss.png', 0.9)
+                    sk.dano()
+                    sk.defesa()
+                    sk.potar()
+                except ImageNotFoundException:
+                    print(f"Mob morto.")
+                    hp = 0
+            else:
+                try:
+                    x, y = localiza('img\\hpBoss.png', 0.9)
+                    sk.dano()
+                    sk.defesa()
+                    sk.potar()
+                except ImageNotFoundException:
+                    print(f"Mob morto.")
+                    hp = 0
+    else:
+        hp = 1
+        while hp == 1:
+            try:
+                x, y = localiza('img\\hpBoss.png', 0.9)
+                sk.dano()
+            except ImageNotFoundException:
+                print(f"Mob morto.")
+                hp = 0
 
 def killGate():
     hp = 1
@@ -44,6 +86,11 @@ def clickE(x, y):
     py.moveTo(x, y, duration=0.1)
     py.click(x, y, button="left")
     sleep(1)
+
+def clickD(x, y):
+    py.moveTo(x, y, duration=0.1)
+    py.click(x, y, button="right")
+    time.sleep(1)
 
 def captar_mouse():
     script = []
@@ -154,7 +201,10 @@ def play():
     while mobsVivos:
         try:
             x, y = localiza('img\\hpBoss.png', 0.9)
-            killBoss()
+            sk.over()
+            killBoss('bm2')
+            clickD(192, 116)  # Desliga BM
+            sleep(1)
             mobsVivos = False
         except ImageNotFoundException:
             print("Mobs vivos ainda!")
@@ -251,8 +301,10 @@ def play():
 
     pdi.press('z')
     pdi.press('3')
-    sleep(5)
+    sleep(3)
     killBoss()
+
+    # bau
     pdi.press('z')
     pdi.press('3')
     sleep(4)
@@ -304,6 +356,7 @@ def play():
     clickE(734, 554)  # tesouro de guilda
     clickE(370, 552)  # dado
     clickE(321, 554)  # sai da dg
+    clickD(192, 116)  # Desliga BM
     sleep(2)
     print("dg finalizada")
 

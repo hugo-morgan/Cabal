@@ -40,7 +40,14 @@ def desliza():
 
 def ligar_bm2():
     clickD(1129, 961)
-    time.sleep(7.5)
+    time.sleep(1)
+    clickD(1129, 961)
+    time.sleep(1)
+    clickD(1129, 961)
+    time.sleep(4)
 
 def bm2_atack():
     clickD(1168, 968)
+
+def aproximar():
+    clickD(1096, 964)

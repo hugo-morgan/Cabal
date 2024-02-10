@@ -125,4 +125,3 @@ def main():
 
     janela.mainloop()
 
-main()

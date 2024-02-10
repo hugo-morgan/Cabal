@@ -160,5 +160,6 @@ def play():
     clickE(734, 554)  # tesouro dez guilda
     clickE(370, 552)  # dado
     clickE(321, 554)  # sai da dg
+    clickD(192, 116)  # Desliga BM
     sleep(2)
     print("dg finalizada")
