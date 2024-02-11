@@ -1,6 +1,8 @@
 import customtkinter as custom
+from PIL import Image
 import arena_7
 import Dxd_gelo
+import Dxd_fogo
 
 def center(win):
     # :param win: the main window or Toplevel window to center
@@ -64,11 +66,11 @@ def iniciar(dg):
             print("Valor inválido.")
             raise Exception("Valor invalido")
 
-
+        print("###################### INICIANDO ##################################")
         print(f"Número de entradas: {numero_entradas}")
         while i < numero_entradas:
             arena_7.play()
-            print(f"Dg numero {i + 1} finalizada")
+            print(f"###################### DG NÚMERO {i + 1} FINALIZADA ##################################")
             i += 1
 
     if dg == 2:
@@ -89,25 +91,52 @@ def iniciar(dg):
             print("Valor inválido.")
             raise Exception("Valor invalido")
 
+        print("###################### INICIANDO ##################################")
         print(f"Número de entradas: {numero_entradas}")
         while i < numero_entradas:
             Dxd_gelo.play()
-            print(f"Dg numero {i + 1} finalizada")
+            print(f"###################### DG NÚMERO {i + 1} FINALIZADA ##################################")
+            i += 1
+
+    if dg == 3:
+        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title="Dx desperta FOGO", font=("Roboto", 15))
+        numero_entradas = quantas_entradas.get_input()
+        try:
+            numero_entradas = int(numero_entradas)
+        except ValueError:
+            new_window = custom.CTkToplevel()
+            new_window.title("Erro")
+            new_window.geometry("395x100")
+
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
+            text.place(x=40, y=20)
+            ok = custom.CTkButton(new_window, text="Ok", command=lambda:new_window.destroy())
+            ok.place(x=120,y=60)
+            print("Valor inválido.")
+            raise Exception("Valor invalido")
+
+        print("###################### INICIANDO ##################################")
+        print(f"Número de entradas: {numero_entradas}")
+        while i < numero_entradas:
+            Dxd_fogo.play()
+            print(f"###################### DG NÚMERO {i + 1} FINALIZADA ##################################")
             i += 1
 
 def main():
 # Janela inicial
     custom.set_appearance_mode("dark")
     janela = custom.CTk()
-    janela.geometry("500x400")
+    janela.geometry("800x430")
     janela.title("Macro Cabal Online")
     janela.resizable(False, False)
 
-    frame = custom.CTkFrame(janela, width=200, height=396)
-    frame.grid(padx=0, pady=0)
+    img = Image.open("login.png")
+    side_img = custom.CTkImage(dark_image=img, light_image=img, size=(350, 430))
+    label_img = custom.CTkLabel(janela, image=side_img, text="")
+    label_img.place(x=0, y=0)
+    texto = custom.CTkLabel(janela, text="Escolha sua dg", font=("Arial Bold", 24))
+    texto.place(x=460, y=20)
 
-    texto = custom.CTkLabel(frame, text="Escolha sua dg", font=("Roboto", 25))
-    texto.place(x=10, y=150)
     # dgs
     def escolher_dg(dg):
         if dg == 1:
@@ -116,12 +145,19 @@ def main():
         if dg == 2:
             iniciar(2)
             # print("2")
+        if dg == 3:
+            iniciar(3)
 
-    botao1 = custom.CTkButton(janela, text="Arena 7", fg_color="green", font=("Arial", 12, "bold"), command=lambda:escolher_dg(1))
-    botao1.place(x= 210, y = 15)
+    botao1 = custom.CTkButton(janela, text="Arena 7", fg_color="#fc6603", hover_color="#fc4e03", font=("Arial Bold", 13), border_color="#000000", border_width=1, text_color="#ffffff", command=lambda:escolher_dg(1))
+    botao1.place(x = 370, y = 100)
 
-    botao2 = custom.CTkButton(janela, text="Dx desperta gelo", fg_color="green", font=("Arial", 12, "bold"), command=lambda:escolher_dg(2))
-    botao2.place(x= 210, y=55)
+    botao2 = custom.CTkButton(janela, text="Dx desperta gelo", fg_color="#fc6603", hover_color="#fc4e03", font=("Arial Bold", 13), border_color="#000000", border_width=1, text_color="#ffffff", command=lambda:escolher_dg(2))
+    botao2.place(x = 370, y = 140)
+
+    botao3 = custom.CTkButton(janela, text="Dx desperta fogo", text_color="#ffffff", fg_color="#c70000", border_color="#000000", border_width=1, font=("Arial", 13, "bold"),
+                            command=lambda: escolher_dg(3))
+    botao3.place(x = 370, y = 180)
+
+
 
     janela.mainloop()
-

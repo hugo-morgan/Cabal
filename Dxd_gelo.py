@@ -67,20 +67,17 @@ def killGate():
             print(f"Portao morto.")
             hp = 0
 
-
 def localiza(imagem, x):
     dados = py.locateOnScreen(image=imagem, minSearchTime=5, confidence=x, grayscale=True)
     dados_ponto = py.center(dados)
     x, y = dados_ponto
     return x, y
 
-
 def missao():
     i = 0
     while i < 6:
         pdi.press('space')
         i += 1
-
 
 def clickE(x, y):
     py.moveTo(x, y, duration=0.1)
@@ -91,29 +88,6 @@ def clickD(x, y):
     py.moveTo(x, y, duration=0.1)
     py.click(x, y, button="right")
     time.sleep(1)
-
-def captar_mouse():
-    script = []
-    quit = False
-    while quit == False:
-        if kb.is_pressed('9'):
-            x, y = py.position()
-            mousepos = [x, y, 'sk.esquiva()']
-            script.append(mousepos)
-            print(script)
-            sleep(1)
-
-        if kb.is_pressed('0'):
-            x, y = py.position()
-            mousepos = [x, y, 'sk.desliza()']
-            script.append(mousepos)
-            print(script)
-            sleep(1)
-
-        if kb.is_pressed('shift'):
-            quit = True
-            sleep(1)
-    return script
 
 def executar_script(script):
     clickE(955, 556)  # click personagem
