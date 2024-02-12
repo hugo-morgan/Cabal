@@ -252,7 +252,7 @@ def play():
     hp = 1
     while hp == 1:
         try:
-            sleep(6)
+            sleep(8)
             pdi.press('z')
             x, y = localiza('img\\hpPortao.png', 0.9)
             sk.dano()

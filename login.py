@@ -24,7 +24,7 @@ Main.center(janela)
 # FILTRO DE AVISO
 warnings.filterwarnings("ignore")
 # Background
-img = PhotoImage(file="login.png")
+img = PhotoImage(file="img/login.png")
 img = img.zoom(35, 20)
 img = img.subsample(70, 40)
 label_img = custom.CTkLabel(janela, image=img, text="")
@@ -84,7 +84,7 @@ def entrar():
 
 # entrar
 entrar = custom.CTkButton(frame, text="Entrar", fg_color="#fc6603", hover_color="#fc4e03", font=("Arial Bold", 12), text_color="#ffffff", command=entrar)
-entrar.place(x=100, y=200)
+entrar.place(x=110, y=200)
 
 janela.mainloop()
 cursor.close()

@@ -1,3 +1,5 @@
+import time
+
 import customtkinter as custom
 from PIL import Image
 import arena_7
@@ -36,11 +38,13 @@ def center(win):
 
 '''
 
-Definir configurações gerais para o macro funcionar, como tamanho de letra,
-fonte, tipo de câmera, etc.
+Definir configurações gerais para o macro funcionar:
+Fechar janela do chat.
 Visao: passaro
-Desabilitar: barra de hp monstro
-Ativar: barra de hp própria
+Desabilitar barra de hp monstro
+Ativar barra de hp própria
+3a Aba F1
+
 DU: 
 1a skill: cacador falcao
 2a skill: chamas do infinito
@@ -60,7 +64,7 @@ def main():
     janela.title("Macro Cabal Online")
     janela.resizable(False, False)
 
-    img = Image.open("login.png")
+    img = Image.open("img/login.png")
     side_img = custom.CTkImage(dark_image=img, light_image=img, size=(350, 430))
     label_img = custom.CTkLabel(janela, image=side_img, text="")
     label_img.place(x=0, y=0)
@@ -79,17 +83,17 @@ def main():
             iniciar(3)
 
     botao1 = custom.CTkButton(janela, text="Arena 7", fg_color="#fc6603", hover_color="#fc4e03",
-                              font=("Arial Bold", 13), border_color="#000000", border_width=1, text_color="#ffffff",
+                              font=("Arial Bold", 13), text_color="#ffffff",
                               command=lambda: escolher_dg(1))
     botao1.place(x=370, y=100)
 
     botao2 = custom.CTkButton(janela, text="Dx desperta gelo", fg_color="#fc6603", hover_color="#fc4e03",
-                              font=("Arial Bold", 13), border_color="#000000", border_width=1, text_color="#ffffff",
+                              font=("Arial Bold", 13), text_color="#ffffff",
                               command=lambda: escolher_dg(2))
     botao2.place(x=370, y=140)
 
     botao3 = custom.CTkButton(janela, text="Dx desperta trem", fg_color="#fc6603", hover_color="#fc4e03",
-                              font=("Arial Bold", 13), border_color="#000000", border_width=1, text_color="#ffffff",
+                              font=("Arial Bold", 13), text_color="#ffffff",
                               command=lambda: escolher_dg(3))
     botao3.place(x=370, y=180)
 
@@ -126,6 +130,7 @@ def iniciar(dg):
 
         print("###################### INICIANDO ##################################")
         print(f"Número de entradas: {numero_entradas}")
+        time.sleep(3)
         while i < numero_entradas:
             arena_7.play()
             restante = numero_entradas - i - 1
@@ -152,8 +157,9 @@ def iniciar(dg):
             ok.place(x=120, y=60)
             print("Valor inválido.")
             raise Exception("Valor invalido")
-        print("###################### INICIANDO ##################################", file=f)
+        print("###################### INICIANDO ##################################")
         print(f"Número de entradas: {numero_entradas}")
+        time.sleep(3)
         while i < numero_entradas:
             Dxd_gelo.play()
             restante = numero_entradas - i - 1
@@ -184,6 +190,7 @@ def iniciar(dg):
         #     print("###################### INICIANDO ##################################", file=f)
         print("###################### INICIANDO ##################################")
         print(f"Número de entradas: {numero_entradas}")
+        time.sleep(3)
         while i < numero_entradas:
             print(f"DG número: {i + 1}")
             Dxd_trem.play()
