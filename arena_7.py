@@ -51,7 +51,15 @@ def killBoss(bm=""):
                 except ImageNotFoundException:
                     print(f"Mob morto.")
                     hp = 0
-
+    else:
+        hp = 1
+        while hp == 1:
+            try:
+                x, y = localiza('img\\hpBoss.png', 0.9)
+                sk.dano()
+            except ImageNotFoundException:
+                print(f"Mob morto.")
+                hp = 0
 
     # FUNCIONAL ABAIXO SEM BM #
     # def killBoss():

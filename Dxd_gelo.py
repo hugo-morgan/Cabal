@@ -17,7 +17,7 @@ def killBoss(bm=""):
             end = time.time()
             tempo_bm = end - start
 
-            if tempo_bm <= 10.00:
+            if tempo_bm <= 80.00:
                 try:
                     x, y = localiza('img\\hpBoss.png', 0.9)
                     sk.bm2_atack()
@@ -25,8 +25,11 @@ def killBoss(bm=""):
                     sk.potar()
                 except ImageNotFoundException:
                     print(f"Mob morto.")
+                    clickD(192, 116)  # Desliga BM
+                    bm2 = False
                     hp = 0
-            elif tempo_bm > 10.00 and bm2 == True:
+
+            elif tempo_bm > 80.00 and bm2 == True:
                 clickD(192,116) # Desliga BM
                 bm2 = False
                 print("BM2 finalizada")
@@ -38,6 +41,7 @@ def killBoss(bm=""):
                 except ImageNotFoundException:
                     print(f"Mob morto.")
                     hp = 0
+
             else:
                 try:
                     x, y = localiza('img\\hpBoss.png', 0.9)
@@ -200,7 +204,12 @@ def play():
         py.moveTo(x, y + 50)
         sk.esquiva()
     except ImageNotFoundException:
-        quit()
+        try:
+            x, y = localiza('img\\dxd_gelo\\mancha1.png', 0.85)
+            py.moveTo(x, y + 40)
+            sk.esquiva()
+        except ImageNotFoundException:
+            quit()
 
 
     py.moveTo(960, 0)

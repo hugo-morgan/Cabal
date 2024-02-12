@@ -2,7 +2,8 @@ import customtkinter as custom
 from PIL import Image
 import arena_7
 import Dxd_gelo
-import Dxd_fogo
+import Dxd_trem
+
 
 def center(win):
     # :param win: the main window or Toplevel window to center
@@ -31,11 +32,15 @@ def center(win):
     # This seems to draw the window frame immediately, so only call deiconify()
     # after setting correct window position
     win.deiconify()
+
+
 '''
 
 Definir configurações gerais para o macro funcionar, como tamanho de letra,
 fonte, tipo de câmera, etc.
 Visao: passaro
+Desabilitar: barra de hp monstro
+Ativar: barra de hp própria
 DU: 
 1a skill: cacador falcao
 2a skill: chamas do infinito
@@ -47,86 +52,8 @@ DU:
 '''
 
 
-def iniciar(dg):
-    i = 0
-    if dg == 1:
-        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title="Arena 7", font=("Roboto", 15))
-        numero_entradas = quantas_entradas.get_input()
-        try:
-            numero_entradas = int(numero_entradas)
-        except ValueError:
-            new_window = custom.CTkToplevel()
-            new_window.title("Erro")
-            new_window.geometry("395x100")
-
-            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
-            text.place(x=40, y=20)
-            ok = custom.CTkButton(new_window, text="Ok", command=lambda:new_window.destroy())
-            ok.place(x=120,y=60)
-            print("Valor inválido.")
-            raise Exception("Valor invalido")
-
-        print("###################### INICIANDO ##################################")
-        print(f"Número de entradas: {numero_entradas}")
-        while i < numero_entradas:
-            arena_7.play()
-            print(f"###################### DG NÚMERO {i + 1} FINALIZADA ##################################")
-            i += 1
-        print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
-
-    if dg == 2:
-        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title="Dx desperta GELO",
-                                                 font=("Roboto", 15))
-        numero_entradas = quantas_entradas.get_input()
-        try:
-            numero_entradas = int(numero_entradas)
-        except ValueError:
-            new_window = custom.CTkToplevel()
-            new_window.title("Erro")
-            new_window.geometry("395x100")
-
-            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
-            text.place(x=40, y=20)
-            ok = custom.CTkButton(new_window, text="Ok", command=lambda: new_window.destroy())
-            ok.place(x=120, y=60)
-            print("Valor inválido.")
-            raise Exception("Valor invalido")
-
-        print("###################### INICIANDO ##################################")
-        print(f"Número de entradas: {numero_entradas}")
-        while i < numero_entradas:
-            Dxd_gelo.play()
-            print(f"###################### DG NÚMERO {i + 1} FINALIZADA ##################################")
-            i += 1
-        print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
-
-    if dg == 3:
-        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title="Dx desperta FOGO", font=("Roboto", 15))
-        numero_entradas = quantas_entradas.get_input()
-        try:
-            numero_entradas = int(numero_entradas)
-        except ValueError:
-            new_window = custom.CTkToplevel()
-            new_window.title("Erro")
-            new_window.geometry("395x100")
-
-            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
-            text.place(x=40, y=20)
-            ok = custom.CTkButton(new_window, text="Ok", command=lambda:new_window.destroy())
-            ok.place(x=120,y=60)
-            print("Valor inválido.")
-            raise Exception("Valor invalido")
-
-        print("###################### INICIANDO ##################################")
-        print(f"Número de entradas: {numero_entradas}")
-        while i < numero_entradas:
-            Dxd_fogo.play()
-            print(f"###################### DG NÚMERO {i + 1} FINALIZADA ##################################")
-            i += 1
-        print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
-
 def main():
-# Janela inicial
+    # Janela inicial
     custom.set_appearance_mode("dark")
     janela = custom.CTk()
     janela.geometry("800x430")
@@ -151,17 +78,121 @@ def main():
         if dg == 3:
             iniciar(3)
 
-    botao1 = custom.CTkButton(janela, text="Arena 7", fg_color="#fc6603", hover_color="#fc4e03", font=("Arial Bold", 13), border_color="#000000", border_width=1, text_color="#ffffff", command=lambda:escolher_dg(1))
-    botao1.place(x = 370, y = 100)
+    botao1 = custom.CTkButton(janela, text="Arena 7", fg_color="#fc6603", hover_color="#fc4e03",
+                              font=("Arial Bold", 13), border_color="#000000", border_width=1, text_color="#ffffff",
+                              command=lambda: escolher_dg(1))
+    botao1.place(x=370, y=100)
 
-    botao2 = custom.CTkButton(janela, text="Dx desperta gelo", fg_color="#fc6603", hover_color="#fc4e03", font=("Arial Bold", 13), border_color="#000000", border_width=1, text_color="#ffffff", command=lambda:escolher_dg(2))
-    botao2.place(x = 370, y = 140)
+    botao2 = custom.CTkButton(janela, text="Dx desperta gelo", fg_color="#fc6603", hover_color="#fc4e03",
+                              font=("Arial Bold", 13), border_color="#000000", border_width=1, text_color="#ffffff",
+                              command=lambda: escolher_dg(2))
+    botao2.place(x=370, y=140)
 
-    botao3 = custom.CTkButton(janela, text="Dx desperta fogo", text_color="#ffffff", fg_color="#c70000", border_color="#000000", border_width=1, font=("Arial", 13, "bold"),
-                            command=lambda: escolher_dg(3))
-    botao3.place(x = 370, y = 180)
+    botao3 = custom.CTkButton(janela, text="Dx desperta trem", fg_color="#fc6603", hover_color="#fc4e03",
+                              font=("Arial Bold", 13), border_color="#000000", border_width=1, text_color="#ffffff",
+                              command=lambda: escolher_dg(3))
+    botao3.place(x=370, y=180)
 
-
+    ########## Tentativa de incrementar console ###########
+    # frame = custom.CTkFrame(master=janela, width=200, height=200, bg_color="#000000", border_width=1, border_color="#ffffff")
+    # frame.place(x=580, y=210)
+    # console_text = custom.StringVar()
+    # console = custom.CTkLabel(master=frame, anchor='nw', bg_color="#000000", height=194, width=193, textvariable=console_text, text_color="#fc6603",
+    #                    font=("Arial bold", 12))
+    # console.place(x=3,y=3)
+    #######################################################
 
     janela.mainloop()
+
+
+def iniciar(dg):
+    i = 0
+    if dg == 1:
+        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title="Arena 7", font=("Roboto", 15))
+        numero_entradas = quantas_entradas.get_input()
+        try:
+            numero_entradas = int(numero_entradas)
+        except ValueError:
+            new_window = custom.CTkToplevel()
+            new_window.title("Erro")
+            new_window.geometry("395x100")
+
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
+            text.place(x=40, y=20)
+            ok = custom.CTkButton(new_window, text="Ok", command=lambda: new_window.destroy())
+            ok.place(x=120, y=60)
+            print("Valor inválido.")
+            raise Exception("Valor invalido")
+
+        print("###################### INICIANDO ##################################")
+        print(f"Número de entradas: {numero_entradas}")
+        while i < numero_entradas:
+            arena_7.play()
+            restante = numero_entradas - i - 1
+            if restante > 0:
+                print(f"###################### RESTAM {restante} ENTRADAS ##################################")
+            else:
+                print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
+            i += 1
+
+    if dg == 2:
+        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title="Dx desperta GELO",
+                                                 font=("Roboto", 15))
+        numero_entradas = quantas_entradas.get_input()
+        try:
+            numero_entradas = int(numero_entradas)
+        except ValueError:
+            new_window = custom.CTkToplevel()
+            new_window.title("Erro")
+            new_window.geometry("395x100")
+
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
+            text.place(x=40, y=20)
+            ok = custom.CTkButton(new_window, text="Ok", command=lambda: new_window.destroy())
+            ok.place(x=120, y=60)
+            print("Valor inválido.")
+            raise Exception("Valor invalido")
+        print("###################### INICIANDO ##################################", file=f)
+        print(f"Número de entradas: {numero_entradas}")
+        while i < numero_entradas:
+            Dxd_gelo.play()
+            restante = numero_entradas - i - 1
+            if restante > 0:
+                print(f"###################### RESTAM {restante} ENTRADAS ##################################")
+            else:
+                print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
+            i += 1
+
+    if dg == 3:
+        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title="Dx desperta TREM",
+                                                 font=("Roboto", 15))
+        numero_entradas = quantas_entradas.get_input()
+        try:
+            numero_entradas = int(numero_entradas)
+        except ValueError:
+            new_window = custom.CTkToplevel()
+            new_window.title("Erro")
+            new_window.geometry("395x100")
+
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
+            text.place(x=40, y=20)
+            ok = custom.CTkButton(new_window, text="Ok", command=lambda: new_window.destroy())
+            ok.place(x=120, y=60)
+            print("Valor inválido.")
+            raise Exception("Valor invalido")
+ #Colocar log       # with open('test.txt', 'w') as f:
+        #     print("###################### INICIANDO ##################################", file=f)
+        print("###################### INICIANDO ##################################")
+        print(f"Número de entradas: {numero_entradas}")
+        while i < numero_entradas:
+            print(f"DG número: {i + 1}")
+            Dxd_trem.play()
+            restante = numero_entradas - i - 1
+            if restante > 0:
+                print(f"###################### RESTAM {restante} ENTRADAS ##################################")
+            else:
+                print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
+            i += 1
+
+
 main()
