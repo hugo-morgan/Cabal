@@ -189,8 +189,14 @@ def play():
             x, y = localiza('img\\hpPortao.png', 0.9)
             sk.dano()
         except ImageNotFoundException:
-            print(f"Mobs mortos.")
-            hp = 0
+            try:
+                sleep(3)
+                pdi.press('z')
+                x, y = localiza('img\\hpPortao.png', 0.9)
+                sk.dano()
+            except ImageNotFoundException:
+                print(f"Mobs mortos.")
+                hp = 0
 
     script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'], [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'], [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
     executar_script(script)
@@ -211,8 +217,14 @@ def play():
             x, y = localiza('img\\hpPortao.png', 0.9)
             sk.dano()
         except ImageNotFoundException:
-            print(f"Mobs mortos.")
-            hp = 0
+            try:
+                sleep(3)
+                pdi.press('z')
+                x, y = localiza('img\\hpPortao.png', 0.9)
+                sk.dano()
+            except ImageNotFoundException:
+                print(f"Mobs mortos.")
+                hp = 0
 
     script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'], [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'], [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
     executar_script(script)
@@ -252,13 +264,20 @@ def play():
     hp = 1
     while hp == 1:
         try:
-            sleep(8)
             pdi.press('z')
             x, y = localiza('img\\hpPortao.png', 0.9)
             sk.dano()
         except ImageNotFoundException:
-            print(f"Mobs mortos.")
-            hp = 0
+            print("Talvez acabaram os mobs.")
+            try:
+                sleep(7)
+                pdi.press('z')
+                x, y = localiza('img\\hpPortao.png', 0.9)
+                sk.dano()
+                print("Ainda há mob!")
+            except ImageNotFoundException:
+                print(f"Mobs mortos.")
+                hp = 0
 
     script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'], [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'], [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
     executar_script(script)
@@ -279,6 +298,7 @@ def play():
         try:
             x, y = localiza('img\\hpBoss.png', 0.9, minsearch=1)
             sk.over()
+            print("Boss encontrado")
             killBoss()
             bossNotFound = False
         except ImageNotFoundException:
@@ -294,11 +314,6 @@ def play():
     sleep(1)
     pdi.press('space')
 
-
-    script = [[812, 505, 'sk.desliza()'], [1270, 473, 'sk.esquiva()'], [1258, 745, 'sk.esquiva()']]
-    executar_script(script)
-    clickE(871, 354)
-    missao()
     sleep(2)
 
     # Finalização da dg

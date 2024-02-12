@@ -63,3 +63,6 @@ def bm2_atack():
 
 def aproximar():
     clickD(1096, 964)
+
+def my_char():
+    pdi.press('home')

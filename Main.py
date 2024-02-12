@@ -41,6 +41,7 @@ def center(win):
 Definir configurações gerais para o macro funcionar:
 Fechar janela do chat.
 Visao: passaro
+Botao home: selecionar personagem proprio
 Desabilitar barra de hp monstro
 Ativar barra de hp própria
 3a Aba F1
