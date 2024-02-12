@@ -67,8 +67,8 @@ def killGate():
             print(f"Portao morto.")
             hp = 0
 
-def localiza(imagem, x):
-    dados = py.locateOnScreen(image=imagem, minSearchTime=5, confidence=x, grayscale=True)
+def localiza(imagem, x, minsearch=5):
+    dados = py.locateOnScreen(image=imagem, minSearchTime=minsearch, confidence=x, grayscale=True)
     dados_ponto = py.center(dados)
     x, y = dados_ponto
     return x, y
@@ -117,12 +117,12 @@ def play():
 
     py.moveTo(960, 0)
     try:
-        x, y = localiza('img\\dxd_gelo\\ref1.png', 0.9)
+        x, y = localiza('img\\dxd_gelo\\ref1.png', 0.85)
         clickE(x, y)
         sleep(1)
     except ImageNotFoundException:
         try:
-            x, y = localiza('img\\dxd_gelo\\ref1_1.png', 0.9)
+            x, y = localiza('img\\dxd_gelo\\ref1_1.png', 0.85)
             clickE(x, y)
             sleep(1)
         except ImageNotFoundException:
@@ -174,7 +174,7 @@ def play():
     mobsVivos = True
     while mobsVivos:
         try:
-            x, y = localiza('img\\hpBoss.png', 0.9)
+            x, y = localiza('img\\hpBoss.png', 0.9, minsearch=2)
             sk.over()
             killBoss('bm2')
             clickD(192, 116)  # Desliga BM
@@ -191,13 +191,17 @@ def play():
     pdi.press('space')
     sleep(3)
 
+    py.moveTo(1383, 624)
+    sk.esquiva()
+
     py.moveTo(960, 0)
     try:
-        x, y = localiza('img\\dxd_gelo\\mancha.png', 0.9)
+        x, y = localiza('img\\dxd_gelo\\mancha.png', 0.85)
         py.moveTo(x, y + 50)
         sk.esquiva()
     except ImageNotFoundException:
-        pass
+        quit()
+
 
     py.moveTo(960, 0)
     try:
@@ -254,24 +258,9 @@ def play():
     except ImageNotFoundException:
         pass
 
-    py.moveTo(553, 957)
-    sk.esquiva()
-    py.moveTo(674, 949)
-    sk.esquiva()
-    py.moveTo(177, 836)
-    sk.desliza()
-    py.moveTo(190, 742)
-    sk.desliza()
-    py.moveTo(1128, 1006)
-    sk.desliza()
-    py.moveTo(1128, 1006)
-    sk.esquiva()
-    py.moveTo(437, 903)
-    sk.desliza()
-    py.moveTo(207, 677)
-    sk.desliza()
-    py.moveTo(262, 969)
-    sk.desliza()
+    script = [[634, 967, 'sk.esquiva()'], [619, 970, 'sk.esquiva()'], [619, 763, 'sk.esquiva()'], [219, 789, 'sk.desliza()'], [700, 881, 'sk.esquiva()'], [638, 973, 'sk.desliza()'], [638, 973, 'sk.esquiva()'], [329, 695, 'sk.desliza()'], [808, 865, 'sk.esquiva()'], [395, 685, 'sk.desliza()'], [578, 831, 'sk.esquiva()']]
+
+    executar_script(script)
 
     pdi.press('z')
     pdi.press('3')
@@ -283,6 +272,10 @@ def play():
     pdi.press('3')
     sleep(4)
     pdi.press('space')
+    pdi.press('space')
+    sleep(1)
+    pdi.press('space')
+    sleep(1)
     pdi.press('space')
     sleep(1)
     pdi.press('space')

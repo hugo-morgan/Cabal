@@ -1,5 +1,6 @@
 import pydirectinput as pdi
 import pyautogui as py
+from pyautogui import ImageNotFoundException
 import time
 
 def clickE(x, y):
@@ -24,6 +25,17 @@ def defesa():
     pdi.press('-')
 def potar():
     clickD(749, 962)
+
+def auto_pot():
+    try:
+        imagem = "img\\auto_pot.png"
+        dados = py.locateOnScreen(image=imagem, minSearchTime=2, confidence=0.9, grayscale=False)
+        dados_ponto = py.center(dados)
+        x, y = dados_ponto
+        clickD(749, 962)
+        print("Vida abaixou.")
+    except ImageNotFoundException:
+        pass
 def over():
     pdi.press('5')
     time.sleep(1)

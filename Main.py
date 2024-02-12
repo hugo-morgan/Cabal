@@ -72,6 +72,7 @@ def iniciar(dg):
             arena_7.play()
             print(f"###################### DG NÚMERO {i + 1} FINALIZADA ##################################")
             i += 1
+        print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
 
     if dg == 2:
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title="Dx desperta GELO",
@@ -97,6 +98,7 @@ def iniciar(dg):
             Dxd_gelo.play()
             print(f"###################### DG NÚMERO {i + 1} FINALIZADA ##################################")
             i += 1
+        print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
 
     if dg == 3:
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title="Dx desperta FOGO", font=("Roboto", 15))
@@ -121,6 +123,7 @@ def iniciar(dg):
             Dxd_fogo.play()
             print(f"###################### DG NÚMERO {i + 1} FINALIZADA ##################################")
             i += 1
+        print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
 
 def main():
 # Janela inicial
@@ -161,3 +164,4 @@ def main():
 
 
     janela.mainloop()
+main()

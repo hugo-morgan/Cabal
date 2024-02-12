@@ -18,7 +18,7 @@ def killBoss(bm=""):
             end = time.time()
             tempo_bm = end - start
 
-            if tempo_bm <= 10.00:
+            if tempo_bm <= 80.00:
                 try:
                     x, y = localiza('img\\hpBoss.png', 0.9)
                     sk.bm2_atack()
@@ -26,8 +26,11 @@ def killBoss(bm=""):
                     sk.potar()
                 except ImageNotFoundException:
                     print(f"Mob morto.")
+                    clickD(192, 116)  # Desliga BM
+                    bm2 = False
                     hp = 0
-            elif tempo_bm > 10.00 and bm2 == True:
+
+            elif tempo_bm > 80.00 and bm2 == True:
                 clickD(192,116) # Desliga BM
                 bm2 = False
                 print("BM2 finalizada")
@@ -75,8 +78,8 @@ def killGate():
             hp = 0
 
 
-def localiza(imagem, x):
-    dados = py.locateOnScreen(image=imagem, minSearchTime=5, confidence=x, grayscale=True)
+def localiza(imagem, x, minsearch=5):
+    dados = py.locateOnScreen(image=imagem, minSearchTime=minsearch, confidence=x, grayscale=True)
     dados_ponto = py.center(dados)
     x, y = dados_ponto
     return x, y
@@ -134,19 +137,20 @@ def play():
     mobsVivos = True
     while mobsVivos:
         try:
-            x, y = localiza('img\\hpBoss.png', 0.9)
+            x, y = localiza('img\\hpBoss.png', 0.9, minsearch=1)
             sk.over()
             killBoss('bm2')
             mobsVivos = False
         except ImageNotFoundException:
             print("Mobs vivos ainda!")
+            sk.auto_pot()
             pdi.press('z')
             sk.dano()
 
     bau = True
     while bau:
         try:
-            x, y = localiza('img\\arena_7\\bau_legendario.png', 0.9)
+            x, y = localiza('img\\arena_7\\bau_legendario.png', 0.9, minsearch=1)
             print("Baú encontrado.")
             bau = False
         except ImageNotFoundException:
