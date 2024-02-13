@@ -4,7 +4,6 @@ import pyautogui as py
 from pyautogui import ImageNotFoundException
 import pydirectinput as pdi
 import skills as sk
-import keyboard as kb
 
 
 def killBoss(bm=""):
@@ -123,7 +122,9 @@ def executar_script(script):
             sk.esquiva()
 
 def play():
-    print("entrando arena 7")
+    texto = "\nEntrando arena 7"
+
+
     clickE(955, 556)  # click personagem
 
     clickE(730, 270)

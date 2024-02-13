@@ -1,8 +1,41 @@
 import warnings
 import customtkinter as custom
 from tkinter import *
-import Main
 import mysql.connector
+
+def posicionar(win, x=0, y=0):
+    # :param win: the main window or Toplevel window to center
+
+    # Apparently a common hack to get the window size. Temporarily hide the
+    # window to avoid update_idletasks() drawing the window in the wrong
+    # position.
+    win.update_idletasks()  # Update "requested size" from geometry manager
+
+    # define window dimensions width and height
+    width = win.winfo_width()
+    frm_width = win.winfo_rootx() - win.winfo_x()
+    win_width = width + 2 * frm_width
+
+    height = win.winfo_height()
+    titlebar_height = win.winfo_rooty() - win.winfo_y()
+    win_height = height + titlebar_height + frm_width
+
+    # Get the window position from the top dynamically as well as position from left or right as follows
+    if x == 0 and y == 0:
+        x = win.winfo_screenwidth() // 2 - win_width // 2
+        y = win.winfo_screenheight() // 2 - win_height // 2
+        x = x - 120
+        y = y - 20
+    else:
+        x = x
+        y = y
+
+    # this is the line that will center your window
+    win.geometry('{}x{}+{}+{}'.format(width, height, x, y))
+
+    # This seems to draw the window frame immediately, so only call deiconify()
+    # after setting correct window position
+    win.deiconify()
 
 conexao = mysql.connector.connect(
     host='localhost',
@@ -16,10 +49,10 @@ cursor = conexao.cursor()
 f = ("Arial bold", 14)
 
 janela = custom.CTk()
+posicionar(janela)
 janela.geometry("700x300")
 janela.title("Login")
 janela.resizable(False, False)
-Main.center(janela)
 
 # FILTRO DE AVISO
 warnings.filterwarnings("ignore")
@@ -78,7 +111,7 @@ def entrar():
             condicao.set("Senha incorreta.")
         elif senha == correta:
             janela.after(250, janela.destroy())
-            Main.main()
+            import Main
     except:
         condicao.set("Usuario não existe.")
 
