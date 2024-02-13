@@ -3,6 +3,7 @@ import keyboard as kb
 import customtkinter as custom
 from PIL import Image
 
+import Dxd_fogo
 import arena_5
 import arena_7
 import Dxd_gelo
@@ -99,8 +100,7 @@ def iniciar(dg):
 
         time.sleep(3)
         while i < numero_entradas:
-            if kb.is_pressed('end'):
-                i = 10000
+            
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
             console.see("end")
@@ -167,8 +167,7 @@ def iniciar(dg):
 
         time.sleep(3)
         while i < numero_entradas:
-            if kb.is_pressed('end'):
-                i = 10000
+            
 
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
@@ -234,8 +233,7 @@ def iniciar(dg):
 
         time.sleep(3)
         while i < numero_entradas:
-            if kb.is_pressed('end'):
-                i = 10000
+            
 
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
@@ -301,8 +299,6 @@ def iniciar(dg):
 
         time.sleep(3)
         while i < numero_entradas:
-            if kb.is_pressed('end'):
-                i = 10000
 
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
@@ -366,16 +362,14 @@ def iniciar(dg):
         console.insert("end", texto)
         console.see("end")
 
-        # time.sleep(3)
+        time.sleep(3)
         while i < numero_entradas:
-            if kb.is_pressed('end'):
-                i = 10000
 
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
             console.see("end")
 
-            # Dxd_fogo.play()
+            Dxd_fogo.play()
             restante = numero_entradas - i - 1
             if restante > 0:
                 texto = "\nRestam {} entradas".format(restante)
@@ -416,8 +410,6 @@ def iniciar(dg):
             new_window.geometry("395x100")
             new_window.wait_visibility()
             new_window.grab_set()
-            new_window.wait_visibility()
-            new_window.grab_set()
 
             text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Arial Bold", 15))
             text.place(x=40, y=20)
@@ -428,15 +420,13 @@ def iniciar(dg):
             console.see("end")
             raise Exception("Valor invalido")
 
-        texto = ("\n##### INICIANDO #####" +
+        texto = ("INICIANDO" +
                  "\n" + "Número de entradas: {}".format(numero_entradas)).ljust(50)
         console.insert("end", texto)
         console.see("end")
 
         time.sleep(3)
         while i < numero_entradas:
-            if kb.is_pressed('end'):
-                i = 10000
 
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
@@ -510,6 +500,26 @@ botao_dg = custom.CTkOptionMenu(janela, width=150, height=25, fg_color="#fc6603"
                               values=["Arena 7", "Arena 6", "Arena 5", "Dx desperta gelo", "Dx desperta trem", "Dx desperta fogo"],
                               command=lambda _: escolher_dg(botao_dg.get()))
 botao_dg.place(x=370, y=100)
+
+configs = custom.CTkTextbox(janela, activate_scrollbars=True, width=250, height=120)
+configs.place(x=540, y=100)
+config_text = """Definir configurações gerais para o macro funcionar: 
+1) Fechar janela do chat.
+2) Visao: passaro
+3) Botao home: selecionar personagem proprio
+4) Desabilitar barra de hp monstro
+5) Ativar barra de hp própria
+6) Ataques: botões 1~4
+7) Buffs atk: botao 5~8, sendo o botao 5 o buff que possui animação(tempo de lancamento).
+8) Recuar: botao 9
+9) Deslizar: botao 0
+10) Buff def: botao -
+11) Pot de hp: slot alt + 1
+12) Choque arcano: slot alt + 0
+13) BM2: slot alt + -
+14) ATK normal: slot alt + -"""
+configs.insert("0.0", config_text)
+configs.configure(state="disabled")
 
 console = custom.CTkTextbox(janela, activate_scrollbars=True, width=300, height=200)
 console.place(x=490, y=230)

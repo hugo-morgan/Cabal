@@ -85,6 +85,6 @@ def executar_script(script):
             sk.esquiva()
 
 
-# script = captar_mouse()
+script = captar_mouse()
 
 
