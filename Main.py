@@ -2,6 +2,8 @@ import time
 import keyboard as kb
 import customtkinter as custom
 from PIL import Image
+
+import arena_5
 import arena_7
 import Dxd_gelo
 import Dxd_trem
@@ -67,7 +69,7 @@ def iniciar(dg):
     console.delete("0.0", "end")
     if dg == "Arena 7":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
-                                                 font=("Roboto", 15))
+                                                 font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
         posicionar(quantas_entradas, 80, 170)
         quantas_entradas.geometry("400x150")
         numero_entradas = quantas_entradas.get_input()
@@ -78,10 +80,12 @@ def iniciar(dg):
             posicionar(new_window)
             new_window.title("Erro")
             new_window.geometry("395x100")
+            new_window.wait_visibility()
+            new_window.grab_set()
 
-            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Arial Bold", 15))
             text.place(x=40, y=20)
-            ok = custom.CTkButton(new_window, text="Ok", command=lambda: new_window.destroy())
+            ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
             texto = ("\nValor inválido.")
             console.insert("end", texto)
@@ -115,18 +119,25 @@ def iniciar(dg):
                 entradas_finalizadas = custom.CTkToplevel()
                 posicionar(entradas_finalizadas)
                 entradas_finalizadas.title("Sucesso")
-                entradas_finalizadas.geometry("395x100")
+                entradas_finalizadas.geometry("375x100")
+                entradas_finalizadas.wait_visibility()
+                entradas_finalizadas.grab_set()
+
 
                 text = custom.CTkLabel(entradas_finalizadas, text="Todas as entradas foram finalizadas.",
-                                       font=("Roboto", 15))
-                text.place(x=40, y=20)
-                continuar = custom.CTkButton(entradas_finalizadas, text="Continuar", command=lambda: entradas_finalizadas.destroy())
+                                       font=("Arial Bold", 15))
+                text.place(x=60, y=20)
+                continuar = custom.CTkButton(entradas_finalizadas, font=("Arial bold", 13), fg_color="#fc6603",
+                                             hover_color="#fc6603", text="Continuar",
+                                             command=lambda: entradas_finalizadas.destroy())
                 continuar.place(x=120, y=60)
-            i += 1
 
+                janela.focus_force()
+            i += 1
+###############################################################################################################################
     if dg == "Dx desperta gelo":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
-                                                 font=("Roboto", 15))
+                                                 font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
         posicionar(quantas_entradas, 80, 170)
         quantas_entradas.geometry("400x150")
         numero_entradas = quantas_entradas.get_input()
@@ -137,10 +148,12 @@ def iniciar(dg):
             posicionar(new_window)
             new_window.title("Erro")
             new_window.geometry("395x100")
+            new_window.wait_visibility()
+            new_window.grab_set()
 
-            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Arial Bold", 15))
             text.place(x=40, y=20)
-            ok = custom.CTkButton(new_window, text="Ok", command=lambda: new_window.destroy())
+            ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
             texto = ("\nValor inválido.")
             console.insert("end", texto)
@@ -171,11 +184,27 @@ def iniciar(dg):
                 texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
                 console.insert("end", texto)
                 console.see("end")
-            i += 1
 
+                entradas_finalizadas = custom.CTkToplevel()
+                posicionar(entradas_finalizadas)
+                entradas_finalizadas.title("Sucesso")
+                entradas_finalizadas.geometry("375x100")
+                entradas_finalizadas.wait_visibility()
+                entradas_finalizadas.grab_set()
+
+                text = custom.CTkLabel(entradas_finalizadas, text="Todas as entradas foram finalizadas.",
+                                       font=("Arial Bold", 15))
+                text.place(x=60, y=20)
+                continuar = custom.CTkButton(entradas_finalizadas, font=("Arial bold", 13), fg_color="#fc6603",
+                                             hover_color="#fc6603", text="Continuar",
+                                             command=lambda: entradas_finalizadas.destroy())
+                continuar.place(x=120, y=60)
+                janela.focus_force()
+            i += 1
+#################################################################################################################################
     if dg == "Dx desperta trem":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
-                                                 font=("Roboto", 15))
+                                                 font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
         posicionar(quantas_entradas, 80, 170)
         quantas_entradas.geometry("400x150")
         numero_entradas = quantas_entradas.get_input()
@@ -186,10 +215,12 @@ def iniciar(dg):
             posicionar(new_window)
             new_window.title("Erro")
             new_window.geometry("395x100")
+            new_window.wait_visibility()
+            new_window.grab_set()
 
-            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Arial Bold", 15))
             text.place(x=40, y=20)
-            ok = custom.CTkButton(new_window, text="Ok", command=lambda: new_window.destroy())
+            ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
             texto = ("\nValor inválido.")
             console.insert("end", texto)
@@ -220,11 +251,27 @@ def iniciar(dg):
                 texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
                 console.insert("end", texto)
                 console.see("end")
-            i += 1
 
+                entradas_finalizadas = custom.CTkToplevel()
+                posicionar(entradas_finalizadas)
+                entradas_finalizadas.title("Sucesso")
+                entradas_finalizadas.geometry("375x100")
+                entradas_finalizadas.wait_visibility()
+                entradas_finalizadas.grab_set()
+
+                text = custom.CTkLabel(entradas_finalizadas, text="Todas as entradas foram finalizadas.",
+                                       font=("Arial Bold", 15))
+                text.place(x=60, y=20)
+                continuar = custom.CTkButton(entradas_finalizadas, font=("Arial bold", 13), fg_color="#fc6603",
+                                             hover_color="#fc6603", text="Continuar",
+                                             command=lambda: entradas_finalizadas.destroy())
+                continuar.place(x=120, y=60)
+                janela.focus_force()
+            i += 1
+###################################################################################################################################
     if dg == "Arena 6":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
-                                                 font=("Roboto", 15))
+                                                 font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
         posicionar(quantas_entradas, 80, 170)
         quantas_entradas.geometry("400x150")
         numero_entradas = quantas_entradas.get_input()
@@ -235,10 +282,12 @@ def iniciar(dg):
             posicionar(new_window)
             new_window.title("Erro")
             new_window.geometry("395x100")
+            new_window.wait_visibility()
+            new_window.grab_set()
 
-            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Arial Bold", 15))
             text.place(x=40, y=20)
-            ok = custom.CTkButton(new_window, text="Ok", command=lambda: new_window.destroy())
+            ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
             texto = ("\nValor inválido.")
             console.insert("end", texto)
@@ -269,11 +318,27 @@ def iniciar(dg):
                 texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
                 console.insert("end", texto)
                 console.see("end")
-            i += 1
 
+                entradas_finalizadas = custom.CTkToplevel()
+                posicionar(entradas_finalizadas)
+                entradas_finalizadas.title("Sucesso")
+                entradas_finalizadas.geometry("375x100")
+                entradas_finalizadas.wait_visibility()
+                entradas_finalizadas.grab_set()
+
+                text = custom.CTkLabel(entradas_finalizadas, text="Todas as entradas foram finalizadas.",
+                                       font=("Arial Bold", 15))
+                text.place(x=60, y=20)
+                continuar = custom.CTkButton(entradas_finalizadas, font=("Arial bold", 13), fg_color="#fc6603",
+                                             hover_color="#fc6603", text="Continuar",
+                                             command=lambda: entradas_finalizadas.destroy())
+                continuar.place(x=120, y=60)
+                janela.focus_force()
+            i += 1
+#################################################################################################################
     if dg == "Dx desperta fogo":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
-                                                 font=("Roboto", 15))
+                                                 font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
         posicionar(quantas_entradas, 80, 170)
         quantas_entradas.geometry("400x150")
         numero_entradas = quantas_entradas.get_input()
@@ -284,10 +349,12 @@ def iniciar(dg):
             posicionar(new_window)
             new_window.title("Erro")
             new_window.geometry("395x100")
+            new_window.wait_visibility()
+            new_window.grab_set()
 
-            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Arial Bold", 15))
             text.place(x=40, y=20)
-            ok = custom.CTkButton(new_window, text="Ok", command=lambda: new_window.destroy())
+            ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
             texto = ("\nValor inválido.")
             console.insert("end", texto)
@@ -322,14 +389,88 @@ def iniciar(dg):
                 entradas_finalizadas = custom.CTkToplevel()
                 posicionar(entradas_finalizadas)
                 entradas_finalizadas.title("Sucesso")
-                entradas_finalizadas.geometry("385x100")
+                entradas_finalizadas.geometry("375x100")
+                entradas_finalizadas.wait_visibility()
+                entradas_finalizadas.grab_set()
 
                 text = custom.CTkLabel(entradas_finalizadas, text="Todas as entradas foram finalizadas.",
-                                       font=("Roboto", 15))
-                text.place(x=50, y=20)
-                continuar = custom.CTkButton(entradas_finalizadas,fg_color="green",hover_color="light blue", text="Continuar", command=lambda: entradas_finalizadas.destroy())
+                                       font=("Arial Bold", 15))
+                text.place(x=60, y=20)
+                continuar = custom.CTkButton(entradas_finalizadas, font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", text="Continuar", command=lambda: entradas_finalizadas.destroy())
                 continuar.place(x=120, y=60)
+                janela.focus_force()
             i += 1
+############################################################################################
+    if dg == "Arena 5":
+        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
+                                                 font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
+        posicionar(quantas_entradas, 80, 170)
+        quantas_entradas.geometry("400x150")
+        numero_entradas = quantas_entradas.get_input()
+        try:
+            numero_entradas = int(numero_entradas)
+        except ValueError or TypeError:
+            new_window = custom.CTkToplevel()
+            posicionar(new_window)
+            new_window.title("Erro")
+            new_window.geometry("395x100")
+            new_window.wait_visibility()
+            new_window.grab_set()
+            new_window.wait_visibility()
+            new_window.grab_set()
+
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Arial Bold", 15))
+            text.place(x=40, y=20)
+            ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
+            ok.place(x=120, y=60)
+            texto = ("\nValor inválido.")
+            console.insert("end", texto)
+            console.see("end")
+            raise Exception("Valor invalido")
+
+        texto = ("\n##### INICIANDO #####" +
+                 "\n" + "Número de entradas: {}".format(numero_entradas)).ljust(50)
+        console.insert("end", texto)
+        console.see("end")
+
+        time.sleep(3)
+        while i < numero_entradas:
+            if kb.is_pressed('end'):
+                i = 10000
+
+            texto = ("\nDG número: {}").format(i + 1)
+            console.insert("end", texto)
+            console.see("end")
+
+            arena_5.play()
+            restante = numero_entradas - i - 1
+            if restante > 0:
+                texto = "\nRestam {} entradas".format(restante)
+                console.insert("end", texto)
+                console.see("end")
+            else:
+                texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
+                console.insert("end", texto)
+                console.see("end")
+
+                entradas_finalizadas = custom.CTkToplevel()
+                posicionar(entradas_finalizadas)
+                entradas_finalizadas.title("Sucesso")
+                entradas_finalizadas.geometry("375x100")
+                entradas_finalizadas.wait_visibility()
+                entradas_finalizadas.grab_set()
+
+                text = custom.CTkLabel(entradas_finalizadas, text="Todas as entradas foram finalizadas.",
+                                       font=("Arial Bold", 15))
+                text.place(x=60, y=20)
+                continuar = custom.CTkButton(entradas_finalizadas, font=("Arial bold", 13), fg_color="#fc6603",
+                                             hover_color="#fc6603", text="Continuar",
+                                             command=lambda: entradas_finalizadas.destroy())
+                continuar.place(x=120, y=60)
+
+                janela.focus_force()
+            i += 1
+############################################################################################
 
 def escolher_dg(dg):
     if dg == "Arena 7":
@@ -344,6 +485,8 @@ def escolher_dg(dg):
         iniciar("Arena 6")
     if dg == "Dx desperta fogo":
         iniciar("Dx desperta fogo")
+    if dg == "Arena 5":
+        iniciar("Arena 5")
 
 
 # Janela inicial
@@ -364,7 +507,7 @@ texto.place(x=460, y=20)
 # Escolher dg
 botao_dg = custom.CTkOptionMenu(janela, width=150, height=25, fg_color="#fc6603",
                               font=("Arial Bold", 13), text_color="#ffffff", button_color="#fc6603", button_hover_color="#fc6603",
-                              values=["Arena 7", "Arena 6", "Dx desperta gelo", "Dx desperta trem", "Dx desperta fogo"],
+                              values=["Arena 7", "Arena 6", "Arena 5", "Dx desperta gelo", "Dx desperta trem", "Dx desperta fogo"],
                               command=lambda _: escolher_dg(botao_dg.get()))
 botao_dg.place(x=370, y=100)
 

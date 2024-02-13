@@ -108,57 +108,57 @@ def executar_script(script):
             sk.esquiva()
 
 def play():
-    texto = "\nEntrando arena 7"
+    texto = "\nEntrando arena 5"
 
 
     clickE(955, 556)  # click personagem
 
-    clickE(730, 270)
-    sleep(3)
-    clickE(737, 328)
-    clickE(1082, 679)
-    sleep(2)
-    clickE(850, 703)  # inicia dg
-
-    anda_portao = [[1347, 283, 'sk.esquiva()'], [1051, 174, 'sk.desliza()'], [1566, 279, 'sk.esquiva()'], [1437, 204, 'sk.desliza()'], [1683, 344, 'sk.esquiva()'], [1263, 293, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [315, 282, 'sk.esquiva()']]
-    executar_script(anda_portao)
-
-    pdi.press('z')
-    killGate()
-
-    centraliza = [[363, 276, 'sk.desliza()'], [150, 748, 'sk.esquiva()'], [258, 237, 'sk.desliza()'], [358, 354, 'sk.desliza()']]
-    executar_script(centraliza)
-
-    mobsVivos = True
-    while mobsVivos:
-        try:
-            x, y = localiza('img\\hpBoss.png', 0.9, minsearch=1)
-            sk.over()
-            killBoss('bm2')
-            mobsVivos = False
-        except ImageNotFoundException:
-            print("Mobs vivos ainda!")
-            sk.auto_pot()
-            pdi.press('z')
-            sk.dano()
-
-    bau = True
-    while bau:
-        try:
-            x, y = localiza('img\\arena_7\\bau_legendario.png', 0.9, minsearch=1)
-            print("Baú encontrado.")
-            bau = False
-        except ImageNotFoundException:
-            print("Baú não encontrado ainda!")
-            pdi.press('z')
-
-    sk.dano()
-
-    pdi.press('space', presses=10, interval=1)
-    clickE(983, 497)  # clica em ok
-    clickE(734, 554)  # tesouro dez guilda
-    clickE(370, 552)  # dado
-    clickE(321, 554)  # sai da dg
-    clickD(192, 116)  # Desliga BM
-    sleep(2)
-    print("dg finalizada")
+    # clickE(730, 270)
+    # sleep(3)
+    # clickE(706, 291)
+    # clickE(1082, 679)
+    # sleep(2)
+    # clickE(850, 703)  # inicia dg
+    #
+    # anda_portao = [[1347, 283, 'sk.esquiva()'], [1051, 174, 'sk.desliza()'], [1566, 279, 'sk.esquiva()'], [1437, 204, 'sk.desliza()'], [1683, 344, 'sk.esquiva()'], [1263, 293, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [315, 282, 'sk.esquiva()']]
+    # executar_script(anda_portao)
+    #
+    # pdi.press('z')
+    # killGate()
+    #
+    # centraliza = [[363, 276, 'sk.desliza()'], [150, 748, 'sk.esquiva()'], [258, 237, 'sk.desliza()'], [358, 354, 'sk.desliza()']]
+    # executar_script(centraliza)
+    #
+    # mobsVivos = True
+    # while mobsVivos:
+    #     try:
+    #         x, y = localiza('img\\hpBoss.png', 0.9, minsearch=1)
+    #         sk.over()
+    #         killBoss('bm2')
+    #         mobsVivos = False
+    #     except ImageNotFoundException:
+    #         print("Mobs vivos ainda!")
+    #         sk.auto_pot()
+    #         pdi.press('z')
+    #         sk.dano()
+    #
+    # bau = True
+    # while bau:
+    #     try:
+    #         x, y = localiza('img\\arena_7\\bau_legendario.png', 0.9, minsearch=1)
+    #         print("Baú encontrado.")
+    #         bau = False
+    #     except ImageNotFoundException:
+    #         print("Baú não encontrado ainda!")
+    #         pdi.press('z')
+    #
+    # sk.dano()
+    #
+    # pdi.press('space', presses=10, interval=1)
+    # clickE(983, 497)  # clica em ok
+    # clickE(734, 554)  # tesouro dez guilda
+    # clickE(370, 552)  # dado
+    # clickE(321, 554)  # sai da dg
+    # clickD(192, 116)  # Desliga BM
+    # sleep(2)
+    # print("dg finalizada")

@@ -308,12 +308,7 @@ def play():
     sleep(1)
     pdi.press('z')
     sk.dano()
-    pdi.press('space')
-    sleep(1)
-    pdi.press('space')
-    sleep(1)
-    pdi.press('space')
-
+    pdi.press('space', presses=4, interval=1)
     sleep(2)
 
     # Finalização da dg

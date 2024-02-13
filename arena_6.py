@@ -61,20 +61,6 @@ def killBoss(bm=""):
                 print(f"Mob morto.")
                 hp = 0
 
-    # FUNCIONAL ABAIXO SEM BM #
-    # def killBoss():
-    # hp = 1
-    # while hp == 1:
-    #     try:
-    #         x, y = localiza('img\\hpBoss.png', 0.9)
-    #         sk.dano()
-    #         sk.defesa()
-    #         sk.potar()
-    #     except ImageNotFoundException:
-    #         print(f"Mob morto.")
-    #         hp = 0
-    ##################
-
 def killGate():
     hp = 1
     while hp == 1:
