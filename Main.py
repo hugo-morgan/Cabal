@@ -5,6 +5,7 @@ from PIL import Image
 import arena_7
 import Dxd_gelo
 import Dxd_trem
+import arena_6
 
 
 def center(win):
@@ -82,6 +83,8 @@ def main():
             # print("2")
         if dg == 3:
             iniciar(3)
+        if dg == 4:
+            iniciar(4)
 
     botao1 = custom.CTkButton(janela, text="Arena 7", fg_color="#fc6603", hover_color="#fc4e03",
                               font=("Arial Bold", 13), text_color="#ffffff",
@@ -97,6 +100,11 @@ def main():
                               font=("Arial Bold", 13), text_color="#ffffff",
                               command=lambda: escolher_dg(3))
     botao3.place(x=370, y=180)
+
+    botao4 = custom.CTkButton(janela, text="Arena 6", fg_color="#fc6603", hover_color="#fc4e03",
+                              font=("Arial Bold", 13), text_color="#ffffff",
+                              command=lambda: escolher_dg(4))
+    botao4.place(x=530, y=100)
 
     ########## Tentativa de incrementar console ###########
     # frame = custom.CTkFrame(master=janela, width=200, height=200, bg_color="#000000", border_width=1, border_color="#ffffff")
@@ -202,5 +210,33 @@ def iniciar(dg):
                 print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
             i += 1
 
+    if dg == 4:
+        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title="Arena 6", font=("Roboto", 15))
+        numero_entradas = quantas_entradas.get_input()
+        try:
+            numero_entradas = int(numero_entradas)
+        except ValueError:
+            new_window = custom.CTkToplevel()
+            new_window.title("Erro")
+            new_window.geometry("395x100")
+
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.", font=("Roboto", 15))
+            text.place(x=40, y=20)
+            ok = custom.CTkButton(new_window, text="Ok", command=lambda: new_window.destroy())
+            ok.place(x=120, y=60)
+            print("Valor inválido.")
+            raise Exception("Valor invalido")
+
+        print("###################### INICIANDO ##################################")
+        print(f"Número de entradas: {numero_entradas}")
+        time.sleep(3)
+        while i < numero_entradas:
+            arena_6.play()
+            restante = numero_entradas - i - 1
+            if restante > 0:
+                print(f"###################### RESTAM {restante} ENTRADAS ##################################")
+            else:
+                print(f"###################### TODAS AS ENTRADAS FINALIZADAS ##################################")
+            i += 1
 
 main()

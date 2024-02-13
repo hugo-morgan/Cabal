@@ -86,3 +86,5 @@ def executar_script(script):
 
 
 # script = captar_mouse()
+
+
