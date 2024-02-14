@@ -1,3 +1,5 @@
+import os
+import subprocess
 import time
 import keyboard as kb
 import customtkinter as custom
@@ -65,6 +67,10 @@ DU:
 
 '''
 
+def att(x, texto):
+    x.configure(state="normal")
+    x.insert("end", texto)
+    x.configure(state="disabled")
 def iniciar(dg):
     i = 0
     console.delete("0.0", "end")
@@ -88,33 +94,43 @@ def iniciar(dg):
             text.place(x=40, y=20)
             ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
+            console.configure(state="normal")
             texto = ("\nValor inválido.")
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
             raise Exception("Valor invalido")
 
-        texto = ("\n##### INICIANDO #####" +
+        console.configure(state="normal")
+        texto = ("##### INICIANDO #####" +
                  "\n" + "Número de entradas: {}".format(numero_entradas)).ljust(50)
         console.insert("end", texto)
         console.see("end")
+        console.configure(state="disabled")
 
         time.sleep(3)
         while i < numero_entradas:
             
+            console.configure(state="normal")
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
 
             arena_7.play()
             restante = numero_entradas - i - 1
             if restante > 0:
+                console.configure(state="normal")
                 texto = "\nRestam {} entradas".format(restante)
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
             else:
+                console.configure(state="normal")
                 texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
 
                 entradas_finalizadas = custom.CTkToplevel()
                 posicionar(entradas_finalizadas)
@@ -155,34 +171,44 @@ def iniciar(dg):
             text.place(x=40, y=20)
             ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
+            console.configure(state="normal")
             texto = ("\nValor inválido.")
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
             raise Exception("Valor invalido")
 
-        texto = ("\n##### INICIANDO #####" +
+        console.configure(state="normal")
+        texto = ("##### INICIANDO #####" +
                  "\n" + "Número de entradas: {}".format(numero_entradas)).ljust(50)
         console.insert("end", texto)
         console.see("end")
+        console.configure(state="disabled")
 
         time.sleep(3)
         while i < numero_entradas:
             
 
+            console.configure(state="normal")
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
 
             Dxd_gelo.play()
             restante = numero_entradas - i - 1
             if restante > 0:
+                console.configure(state="normal")
                 texto = "\nRestam {} entradas".format(restante)
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
             else:
+                console.configure(state="normal")
                 texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
 
                 entradas_finalizadas = custom.CTkToplevel()
                 posicionar(entradas_finalizadas)
@@ -221,34 +247,44 @@ def iniciar(dg):
             text.place(x=40, y=20)
             ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
+            console.configure(state="normal")
             texto = ("\nValor inválido.")
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
             raise Exception("Valor invalido")
 
-        texto = ("\n##### INICIANDO #####" +
+        console.configure(state="normal")
+        texto = ("##### INICIANDO #####" +
                  "\n" + "Número de entradas: {}".format(numero_entradas)).ljust(50)
         console.insert("end", texto)
         console.see("end")
+        console.configure(state="disabled")
 
         time.sleep(3)
         while i < numero_entradas:
             
 
+            console.configure(state="normal")
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
 
             Dxd_trem.play()
             restante = numero_entradas - i - 1
             if restante > 0:
+                console.configure(state="normal")
                 texto = "\nRestam {} entradas".format(restante)
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
             else:
+                console.configure(state="normal")
                 texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
 
                 entradas_finalizadas = custom.CTkToplevel()
                 posicionar(entradas_finalizadas)
@@ -287,33 +323,43 @@ def iniciar(dg):
             text.place(x=40, y=20)
             ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
+            console.configure(state="normal")
             texto = ("\nValor inválido.")
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
             raise Exception("Valor invalido")
 
-        texto = ("\n##### INICIANDO #####" +
+        console.configure(state="normal")
+        texto = ("##### INICIANDO #####" +
                  "\n" + "Número de entradas: {}".format(numero_entradas)).ljust(50)
         console.insert("end", texto)
         console.see("end")
+        console.configure(state="disabled")
 
         time.sleep(3)
         while i < numero_entradas:
 
+            console.configure(state="normal")
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
 
             arena_6.play()
             restante = numero_entradas - i - 1
             if restante > 0:
+                console.configure(state="normal")
                 texto = "\nRestam {} entradas".format(restante)
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
             else:
+                console.configure(state="normal")
                 texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
 
                 entradas_finalizadas = custom.CTkToplevel()
                 posicionar(entradas_finalizadas)
@@ -352,33 +398,47 @@ def iniciar(dg):
             text.place(x=40, y=20)
             ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
+            console.configure(state="normal")
             texto = ("\nValor inválido.")
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
             raise Exception("Valor invalido")
 
-        texto = ("\n##### INICIANDO #####" +
+
+        console.configure(state="normal")
+        texto = ("##### INICIANDO #####" +
                  "\n" + "Número de entradas: {}".format(numero_entradas)).ljust(50)
         console.insert("end", texto)
         console.see("end")
+        console.configure(state="disabled")
 
-        time.sleep(3)
+
+        # time.sleep(3)
         while i < numero_entradas:
 
+            console.configure(state="normal")
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
 
             Dxd_fogo.play()
+            # os.system("python Dxd_fogo.py")
+            att(console, "\nEm manutenção!")
             restante = numero_entradas - i - 1
             if restante > 0:
+                console.configure(state="normal")
                 texto = "\nRestam {} entradas".format(restante)
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
             else:
+                console.configure(state="normal")
                 texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
 
                 entradas_finalizadas = custom.CTkToplevel()
                 posicionar(entradas_finalizadas)
@@ -415,9 +475,13 @@ def iniciar(dg):
             text.place(x=40, y=20)
             ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603", hover_color="#fc6603", command=lambda: new_window.destroy())
             ok.place(x=120, y=60)
+
+            console.configure(state="normal")
             texto = ("\nValor inválido.")
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
+
             raise Exception("Valor invalido")
 
         texto = ("INICIANDO" +
@@ -428,20 +492,31 @@ def iniciar(dg):
         time.sleep(3)
         while i < numero_entradas:
 
+            console.configure(state="normal")
             texto = ("\nDG número: {}").format(i + 1)
             console.insert("end", texto)
             console.see("end")
+            console.configure(state="disabled")
 
+            
             arena_5.play()
             restante = numero_entradas - i - 1
             if restante > 0:
+
+                console.configure(state="normal")
                 texto = "\nRestam {} entradas".format(restante)
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
+
             else:
+
+                console.configure(state="normal")
                 texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
                 console.insert("end", texto)
                 console.see("end")
+                console.configure(state="disabled")
+
 
                 entradas_finalizadas = custom.CTkToplevel()
                 posicionar(entradas_finalizadas)
@@ -523,6 +598,7 @@ configs.configure(state="disabled")
 
 console = custom.CTkTextbox(janela, activate_scrollbars=True, width=300, height=200)
 console.place(x=490, y=230)
+console.configure(state="disabled")
 
 
 janela.mainloop()
