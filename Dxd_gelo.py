@@ -4,8 +4,15 @@ import pyautogui as py
 from pyautogui import ImageNotFoundException
 import pydirectinput as pdi
 import skills as sk
-import keyboard as kb
+import sys, os
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(
+        sys,
+        '_MEIPASS',
+        os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 def killBoss(bm=""):
     if bm == 'bm2': # 90s de BM2
         sk.ligar_bm2()
@@ -72,7 +79,7 @@ def killGate():
             hp = 0
 
 def localiza(imagem, x, minsearch=5):
-    dados = py.locateOnScreen(image=imagem, minSearchTime=minsearch, confidence=x, grayscale=True)
+    dados = py.locateOnScreen(image=resource_path(imagem), minSearchTime=minsearch, confidence=x, grayscale=True)
     dados_ponto = py.center(dados)
     x, y = dados_ponto
     return x, y

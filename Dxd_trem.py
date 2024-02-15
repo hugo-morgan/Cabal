@@ -4,9 +4,15 @@ import pyautogui as py
 from pyautogui import ImageNotFoundException
 import pydirectinput as pdi
 import skills as sk
-import keyboard as kb
+import sys, os
 
-
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(
+        sys,
+        '_MEIPASS',
+        os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 def killBoss(bm=""):
     if bm == 'bm2':  # 90s de BM2
         sk.ligar_bm2()
@@ -129,7 +135,7 @@ def killGate():
 
 
 def localiza(imagem, x, minsearch=5):
-    dados = py.locateOnScreen(image=imagem, minSearchTime=minsearch, confidence=x, grayscale=True)
+    dados = py.locateOnScreen(image=resource_path(imagem), minSearchTime=minsearch, confidence=x, grayscale=True)
     dados_ponto = py.center(dados)
     x, y = dados_ponto
     return x, y
@@ -171,7 +177,11 @@ def play():
     print("entrando dxd trem")
     ###########################################
     clickE(955, 556)  # click personagem
-    clickE(1296, 447)
+    clickE(1337, 271)
+    sleep(3)
+    clickE(1308, 419)
+    sleep(3)
+    clickE(1337, 271) # ele vai clicar +2 vezes pra ter certeza que nao tem mob
     clickE(736, 306)
     clickE(1068, 681)
     clickE(848, 703) # Inicia dg

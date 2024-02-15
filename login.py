@@ -2,7 +2,15 @@ import warnings
 import customtkinter as custom
 from tkinter import *
 import mysql.connector
-
+import sys
+import os
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(
+        sys,
+        '_MEIPASS',
+        os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 def posicionar(win, x=0, y=0):
     # :param win: the main window or Toplevel window to center
 
@@ -40,7 +48,7 @@ def posicionar(win, x=0, y=0):
 conexao = mysql.connector.connect(
     host='localhost',
     user='root',
-    password='123456',
+    password='x',
     database='cabal'
 )
 print("Conexão bem sucedida!")
@@ -57,7 +65,7 @@ janela.resizable(False, False)
 # FILTRO DE AVISO
 warnings.filterwarnings("ignore")
 # Background
-img = PhotoImage(file="img/login.png")
+img = PhotoImage(file=resource_path("img/login.png"))
 img = img.zoom(35, 20)
 img = img.subsample(70, 40)
 label_img = custom.CTkLabel(janela, image=img, text="")

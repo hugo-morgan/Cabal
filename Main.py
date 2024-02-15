@@ -4,6 +4,7 @@ import time
 import keyboard as kb
 import customtkinter as custom
 from PIL import Image
+import sys, os
 
 import Dxd_fogo
 import arena_5
@@ -12,6 +13,13 @@ import Dxd_gelo
 import Dxd_trem
 import arena_6
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(
+        sys,
+        '_MEIPASS',
+        os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 def posicionar(win, x=0, y=0):
     # :param win: the main window or Toplevel window to center
 
@@ -562,7 +570,7 @@ janela.geometry("800x430")
 janela.title("Macro Cabal Online")
 janela.resizable(False, False)
 
-img = Image.open("img/login.png")
+img = Image.open(resource_path("img/login.png"))
 side_img = custom.CTkImage(dark_image=img, light_image=img, size=(350, 430))
 label_img = custom.CTkLabel(janela, image=side_img, text="")
 label_img.place(x=0, y=0)

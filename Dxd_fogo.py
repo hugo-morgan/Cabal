@@ -5,8 +5,15 @@ from pyautogui import ImageNotFoundException
 import pydirectinput as pdi
 import skills as sk
 import customtkinter as custom
-import keyboard as kb
+import sys, os
 
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(
+        sys,
+        '_MEIPASS',
+        os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 def posicionar(win, x=0, y=0):
     # :param win: the main window or Toplevel window to center
 
@@ -163,7 +170,7 @@ def killGate():
 
 
 def localiza(imagem, x, minsearch=5):
-    dados = py.locateOnScreen(image=imagem, minSearchTime=minsearch, confidence=x, grayscale=True)
+    dados = py.locateOnScreen(image=resource_path(imagem), minSearchTime=minsearch, confidence=x, grayscale=True)
     dados_ponto = py.center(dados)
     x, y = dados_ponto
     return x, y
