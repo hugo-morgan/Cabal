@@ -14,6 +14,12 @@ def resource_path(relative_path):
         os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
 
+def hotkey(tecla1, tecla2):
+    pdi.keyDown(tecla1)
+    pdi.keyDown(tecla2)
+    pdi.keyUp(tecla2)
+    pdi.keyUp(tecla1)
+
 def killBoss(bm=""):
     if bm == 'bm2': # 90s de BM2
         sk.ligar_bm2()

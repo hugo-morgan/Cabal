@@ -4,6 +4,11 @@ from pyautogui import ImageNotFoundException
 import time
 import sys, os
 
+def hotkey(tecla1, tecla2):
+    pdi.keyDown(tecla1)
+    pdi.keyDown(tecla2)
+    pdi.keyUp(tecla2)
+    pdi.keyUp(tecla1)
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
@@ -33,15 +38,16 @@ def dano():
 def defesa():
     pdi.press('-')
 def potar():
-    clickD(749, 962)
-
+    # clickD(749, 962)
+    hotkey('alt','1')
 def auto_pot():
     try:
         imagem = "img/auto_pot.png"
         dados = py.locateOnScreen(image=str(resource_path(imagem)), minSearchTime=2, confidence=0.9, grayscale=False)
         dados_ponto = py.center(dados)
         x, y = dados_ponto
-        clickD(749, 962)
+        # clickD(749, 962)
+        hotkey('alt','1')
         print("Vida abaixou.")
     except ImageNotFoundException:
         pass
@@ -60,18 +66,28 @@ def desliza():
     time.sleep(1)
 
 def ligar_bm2():
-    clickD(1129, 961)
+    # clickD(1129, 961)
+    hotkey('alt', '-')
     time.sleep(1)
-    clickD(1129, 961)
+    hotkey('alt', '-')
     time.sleep(1)
-    clickD(1129, 961)
+    hotkey('alt', '-')
     time.sleep(4)
 
+def ligar_bm3():
+    hotkey('alt', '2')
+    time.sleep(1)
+    hotkey('alt', '2')
+    time.sleep(1)
+    hotkey('alt', '2')
+def bm3_atack():
+    hotkey('alt', '4')
+
 def bm2_atack():
-    clickD(1168, 968)
-
+    # clickD(1168, 968)
+    hotkey('alt', '=')
 def aproximar():
-    clickD(1096, 964)
-
+    # clickD(1096, 964)
+    hotkey('alt', '0')
 def my_char():
     pdi.press('home')

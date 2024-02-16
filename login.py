@@ -46,9 +46,9 @@ def posicionar(win, x=0, y=0):
     win.deiconify()
 
 conexao = mysql.connector.connect(
-    host='localhost',
+    host='35.199.97.99',
     user='root',
-    password='x',
+    password='96962270',
     database='cabal'
 )
 print("Conexão bem sucedida!")

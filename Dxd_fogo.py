@@ -7,6 +7,7 @@ import skills as sk
 import customtkinter as custom
 import sys, os
 
+
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
     base_path = getattr(
@@ -14,6 +15,8 @@ def resource_path(relative_path):
         '_MEIPASS',
         os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
+
+
 def posicionar(win, x=0, y=0):
     # :param win: the main window or Toplevel window to center
 
@@ -47,6 +50,7 @@ def posicionar(win, x=0, y=0):
     # This seems to draw the window frame immediately, so only call deiconify()
     # after setting correct window position
     win.deiconify()
+
 
 def killBoss(bm=""):
     if bm == 'bm2':  # 90s de BM2
@@ -93,6 +97,50 @@ def killBoss(bm=""):
                 except ImageNotFoundException:
                     print(f"Mob morto.")
                     hp = 0
+    elif bm == 'bm3':
+        sk.ligar_bm3()
+        start = time.time()
+        hp = 1
+        bm3 = True
+        print("BM3 ativa")
+        while hp == 1:
+            end = time.time()
+            tempo_bm = end - start
+
+            if tempo_bm <= 80.00:
+                try:
+                    x, y = localiza('img/hpBoss.png', 0.9)
+                    sk.bm3_atack()
+                    sk.defesa()
+                    sk.potar()
+                except ImageNotFoundException:
+                    print(f"Mob morto.")
+                    clickD(192, 116)  # Desliga BM
+                    bm3 = False
+                    hp = 0
+
+            elif tempo_bm > 80.00 and bm3 == True:
+                clickD(192, 116)  # Desliga BM
+                bm3 = False
+                print("BM3 finalizada")
+                try:
+                    x, y = localiza('img/hpBoss.png', 0.9)
+                    sk.dano()
+                    sk.defesa()
+                    sk.potar()
+                except ImageNotFoundException:
+                    print(f"Mob morto.")
+                    hp = 0
+
+                else:
+                    try:
+                        x, y = localiza('img/hpBoss.png', 0.9)
+                        sk.dano()
+                        sk.defesa()
+                        sk.potar()
+                    except ImageNotFoundException:
+                        print(f"Mob morto.")
+                        hp = 0
     else:
         hp = 1
         while hp == 1:
@@ -102,6 +150,7 @@ def killBoss(bm=""):
             except ImageNotFoundException:
                 print(f"Mob morto.")
                 hp = 0
+
 
 def killBoss2(bm=""):
     if bm == 'bm2':  # 90s de BM2
@@ -131,7 +180,7 @@ def killBoss2(bm=""):
                 bm2 = False
                 print("BM2 finalizada")
                 try:
-                    x, y = localiza('img/dxd_trem/1boss.png', 0.9)
+                    x, y = localiza('img/hpBoss2.png', 0.9)
                     sk.dano()
                     sk.defesa()
                     sk.potar()
@@ -141,7 +190,52 @@ def killBoss2(bm=""):
 
             else:
                 try:
-                    x, y = localiza('img/dxd_trem/1boss.png', 0.9)
+                    x, y = localiza('img/hpBoss2.png', 0.9)
+                    sk.dano()
+                    sk.defesa()
+                    sk.potar()
+                except ImageNotFoundException:
+                    print(f"Mob morto.")
+                    hp = 0
+
+    elif bm == 'bm3':  # 90s de BM3
+        sk.ligar_bm3()
+        start = time.time()
+        hp = 1
+        bm3 = True
+        print("BM3 ativa")
+        while hp == 1:
+            end = time.time()
+            tempo_bm = end - start
+
+            if tempo_bm <= 80.00:
+                try:
+                    x, y = localiza('img/hpBoss2.png', 0.9)
+                    sk.bm3_atack()
+                    sk.defesa()
+                    sk.potar()
+                except ImageNotFoundException:
+                    print(f"Mob morto.")
+                    clickD(192, 116)  # Desliga BM
+                    bm3 = False
+                    hp = 0
+
+            elif tempo_bm > 80.00 and bm3 == True:
+                clickD(192, 116)  # Desliga BM
+                bm3 = False
+                print("BM3 finalizada")
+                try:
+                    x, y = localiza('img/hpBoss2.png', 0.9)
+                    sk.dano()
+                    sk.defesa()
+                    sk.potar()
+                except ImageNotFoundException:
+                    print(f"Mob morto.")
+                    hp = 0
+
+            else:
+                try:
+                    x, y = localiza('img/hpBoss2.png', 0.9)
                     sk.dano()
                     sk.defesa()
                     sk.potar()
@@ -152,11 +246,19 @@ def killBoss2(bm=""):
         hp = 1
         while hp == 1:
             try:
-                x, y = localiza('img/dxd_trem/1boss.png', 0.9)
+                x, y = localiza('img/hpBoss2.png', 0.9)
                 sk.dano()
             except ImageNotFoundException:
                 print(f"Mob morto.")
                 hp = 0
+
+
+def hotkey(tecla1, tecla2):
+    pdi.keyDown(tecla1)
+    pdi.keyDown(tecla2)
+    pdi.keyUp(tecla2)
+    pdi.keyUp(tecla1)
+
 
 def killGate():
     hp = 1
@@ -207,30 +309,38 @@ def executar_script(script):
             py.moveTo(x, y)
             sk.esquiva()
 
-def play():
 
+def att(x, texto):
+    x.configure(state="normal")
+    x.insert("end", texto)
+    x.configure(state="disabled")
+
+
+def play():
     print("entrando dxd fogo")
     ###########################################
 
-    clickE(955, 556)  # click personagem
 
-    # pdi.press('z')
-    # sk.dano()
-    # clickE(998, 173)
-    # sleep(1)
-    # clickE(700, 307)
-    # clickE(1066, 681)
-    # clickE(848, 703) # Inicia dg
-#
-# # # 1 Boss
+    clickE(955, 556)  # click personagem
+#     clickE(998, 173)
+#     sleep(1)
+#     clickE(1144, 279)
+#     sleep(1)
+#     clickE(1050, 186)
+#     sleep(1)
+#     clickE(700, 307)
+#     clickE(1066, 681)
+#     clickE(848, 703) # Inicia dg
+# #
+# # # # 1 Boss
 #     script = [[1093, 387, 'sk.desliza()'], [670, 545, 'sk.esquiva()']]
 #     executar_script(script)
 #
 #     sk.over()
 #     pdi.press('z')
-#     killBoss('bm2')
-#
-# # # Baú
+#     killBoss('bm3')
+# #
+# # # # Baú
 #     pdi.press('z')
 #     sk.dano()
 #     pdi.press('space', presses=3, interval=1)
@@ -238,7 +348,7 @@ def play():
 #     script = [[1280, 369, 'sk.desliza()'], [1029, 359, 'sk.esquiva()'], [1307, 274, 'sk.desliza()'], [1199, 232, 'sk.esquiva()'], [1336, 235, 'sk.desliza()'], [992, 167, 'sk.esquiva()'], [1334, 183, 'sk.desliza()'], [1334, 183, 'sk.esquiva()'], [1469, 309, 'sk.desliza()'], [1435, 293, 'sk.esquiva()'], [1739, 500, 'sk.desliza()'], [1492, 414, 'sk.esquiva()']]
 #     executar_script(script)
 #
-# # # Boss do portão 1
+# # Boss do portão 1
 #     bossNotFound = True
 #     while bossNotFound:
 #         try:
@@ -247,54 +357,105 @@ def play():
 #             bossNotFound = False
 #         except ImageNotFoundException:
 #             pdi.press('z')
+'''
+Colocar aqui o local de referencia para posicionar
+'''
+# clickE(955, 556)  # click personagem
+# clickE(998, 173)
+# sleep(1)
+# clickE(1144, 279)
+# sleep(1)
+# clickE(1050, 186)
+# sleep(1)
+# clickE(700, 307)
+# clickE(1066, 681)
+# clickE(848, 703) # Inicia dg
+# #
+# # # # 1 Boss
+# script = [[1093, 387, 'sk.desliza()'], [670, 545, 'sk.esquiva()']]
+# executar_script(script)
+#
+# sk.over()
+# pdi.press('z')
+# killBoss('bm3')
+# #
+# # # # Baú
+# pdi.press('z')
+# sk.dano()
+# pdi.press('space', presses=3, interval=1)
+#
+# script = [[1280, 369, 'sk.desliza()'], [1029, 359, 'sk.esquiva()'], [1307, 274, 'sk.desliza()'], [1199, 232, 'sk.esquiva()'], [1336, 235, 'sk.desliza()'], [992, 167, 'sk.esquiva()'], [1334, 183, 'sk.desliza()'], [1334, 183, 'sk.esquiva()'], [1469, 309, 'sk.desliza()'], [1435, 293, 'sk.esquiva()'], [1739, 500, 'sk.desliza()'], [1492, 414, 'sk.esquiva()']]
+# executar_script(script)
+#
+# # Boss do portão 1
+# bossNotFound = True
+# while bossNotFound:
+#     try:
+#         x, y = localiza('img/hpBoss2.png', 0.9, minsearch=1)
+#         sk.aproximar()
+#         killBoss2()
+#         bossNotFound = False
+#     except ImageNotFoundException:
+#         pdi.press('z')
 #
 #
+# '''
+# Até aqui ele fez o processo de ir para a referencia
+# '''
+# #
 # # Boss do portão 2
-#     script = [[1324, 568, 'sk.esquiva()'], [1451, 438, 'sk.desliza()'], [1290, 744, 'sk.esquiva()'], [1777, 564, 'sk.desliza()'], [1435, 939, 'sk.esquiva()'], [1146, 114, 'sk.desliza()'], [1351, 202, 'sk.esquiva()'], [1155, 197, 'sk.desliza()'], [994, 183, 'sk.esquiva()'], [770, 158, 'sk.desliza()'], [577, 270, 'sk.esquiva()'], [701, 386, 'sk.desliza()'], [1384, 518, 'sk.desliza()'], [1338, 591, 'sk.esquiva()']]
-#     executar_script(script)
-
-#     bossNotFound = True
-#     while bossNotFound:
-#         try:
-#             x, y = localiza('img/hpBoss2.png', 0.9, minsearch=1)
-#             killBoss2()
-#             bossNotFound = False
-#         except ImageNotFoundException:
-#             pdi.press('z')
+# script = [[1176, 916, 'sk.esquiva()'], [1317, 628, 'sk.esquiva()'], [1408, 365, 'sk.desliza()'], [1223, 891, 'sk.esquiva()'], [989, 423, 'sk.esquiva()'], [1465, 620, 'sk.esquiva()'], [887, 388, 'sk.esquiva()'], [1272, 447, 'sk.esquiva()'], [1246, 216, 'sk.desliza()'], [1246, 216, 'sk.esquiva()'], [1337, 442, 'sk.desliza()'], [1087, 435, 'sk.esquiva()'], [418, 509, 'sk.desliza()'], [1179, 328, 'sk.esquiva()'], [423, 444, 'sk.desliza()'],
+# [1099, 288, 'sk.esquiva()'], [690, 586, 'sk.esquiva()']]
+# executar_script(script)
 #
-#     script = [[316, 753, 'sk.desliza()'], [601, 866, 'sk.esquiva()'], [517, 680, 'sk.desliza()'], [519, 887, 'sk.esquiva()'], [1159, 211, 'sk.desliza()'], [930, 208, 'sk.esquiva()'], [1186, 207, 'sk.desliza()'], [935, 206, 'sk.esquiva()'], [1232, 233, 'sk.desliza()'], [1448, 410, 'sk.esquiva()'], [1247, 319, 'sk.desliza()'], [1588, 718, 'sk.esquiva()'], [828, 261, 'sk.desliza()'], [1371, 480, 'sk.esquiva()']]
-#     executar_script(script)
+# bossNotFound = True
+# while bossNotFound:
+#     try:
+#         x, y = localiza('img/hpBoss2.png', 0.9, minsearch=1)
+#         killBoss2()
+#         bossNotFound = False
+#     except ImageNotFoundException:
+#         pdi.press('z')
 #
-#     pdi.press('z')
-#     sk.dano()
+# script = [[456, 753, 'sk.desliza()'], [501, 866, 'sk.esquiva()'], [617, 680, 'sk.desliza()'],
+#           [656, 608, 'sk.esquiva()'], [319, 887, 'sk.esquiva()'], [1359, 211, 'sk.desliza()'], [330, 208, 'sk.esquiva()'],
+#           [1386, 207, 'sk.desliza()'], [335, 206, 'sk.esquiva()'], [1432, 233, 'sk.desliza()'], [1337, 682, 'sk.esquiva()'],
+#           [656, 608, 'sk.esquiva()'], [1432, 233, 'sk.desliza()'], [656, 608, 'sk.esquiva()'], [1337, 682, 'sk.esquiva()'], #### 1337, 682
+#           [1548, 410, 'sk.esquiva()'], [1447, 319, 'sk.desliza()'], [1688, 718, 'sk.esquiva()'], [1337, 682, 'sk.esquiva()'],
+#           [656, 608, 'sk.esquiva()'], [328, 261, 'sk.desliza()'], [1571, 480, 'sk.esquiva()'], [501, 866, 'sk.esquiva()'], [617, 680, 'sk.desliza()'],
+#           [319, 887, 'sk.esquiva()'], [1359, 211, 'sk.desliza()'], [330, 208, 'sk.esquiva()'],
+#           [1386, 207, 'sk.desliza()'], [335, 206, 'sk.esquiva()'], [1432, 233, 'sk.desliza()'],
+#           [1548, 410, 'sk.esquiva()'], [1447, 319, 'sk.desliza()'], [1688, 718, 'sk.esquiva()'],
+#           [328, 261, 'sk.desliza()'], [1571, 480, 'sk.esquiva()']]
+# executar_script(script)
 #
-#     script = [[1487, 371, 'sk.desliza()'], [1677, 602, 'sk.esquiva()'], [1773, 613, 'sk.desliza()'], [1689, 694, 'sk.esquiva()'], [1573, 715, 'sk.desliza()']]
-#     executar_script(script)
+# pdi.press('z')
+# sk.dano()
+# #
+# script = [[1487, 371, 'sk.desliza()'], [722, 278, 'sk.desliza()'], [446, 231, 'sk.esquiva()'],
+#           [786, 509, 'sk.esquiva()'], [1677, 602, 'sk.esquiva()'], [1773, 613, 'sk.desliza()'], [1689, 694, 'sk.esquiva()'],
+#           [1573, 715, 'sk.desliza()']]
+# executar_script(script)
 #
 # # Ultimo boss
-#     pdi.press('z')
-#     killBoss('bm2')
+# pdi.press('z')
+# killBoss('bm2')
 # # # Bau
-#     sleep(1)
-#     pdi.press('z')
-#     sk.dano()
-#     pdi.press('space', presses=4, interval=1)
-#     sleep(2)
+# sleep(2)
+# pdi.press('z')
+# sk.dano()
+# pdi.press('space', presses=4, interval=1)
+# sleep(2)
 #
 # # Finalização da dg
-#     clickE(983, 497)
-#     clickE(734, 554)  # tesouro de guilda
-#     clickE(370, 552)  # dado
-#     clickE(321, 554)  # sai da dg
-#     clickD(192, 116)  # Desliga BM
-#     sleep(2)
-#     print("dg finalizada")
-
-
-def att(x, texto):
-    x.configure(state="normal")
-    x.insert("end", texto)
-    x.configure(state="disabled")
+# clickE(983, 497)
+# clickE(734, 554)  # tesouro de guilda
+# clickE(370, 552)  # dado
+# clickE(321, 554)  # sai da dg
+# clickD(192, 116)  # Desliga BM
+# sleep(2)
+# print("dg finalizada")
+#
 
 # janela = custom.CTk()
 # posicionar(janela, 2, 80)
@@ -307,10 +468,6 @@ def att(x, texto):
 # janela.attributes("-topmost", True)
 #
 # play()
-#
-#
-#
-#
 #
 #
 # janela.mainloop()
