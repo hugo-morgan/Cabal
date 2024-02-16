@@ -26,7 +26,7 @@ def killBoss(bm=""):
 
             if tempo_bm <= 80.00:
                 try:
-                    x, y = localiza('img\\hpBoss.png', 0.9)
+                    x, y = localiza('img/hpBoss.png', 0.9)
                     sk.bm2_atack()
                     sk.defesa()
                     sk.potar()
@@ -41,7 +41,7 @@ def killBoss(bm=""):
                 bm2 = False
                 print("BM2 finalizada")
                 try:
-                    x, y = localiza('img\\hpBoss.png', 0.9)
+                    x, y = localiza('img/hpBoss.png', 0.9)
                     sk.dano()
                     sk.defesa()
                     sk.potar()
@@ -50,7 +50,7 @@ def killBoss(bm=""):
                     hp = 0
             else:
                 try:
-                    x, y = localiza('img\\hpBoss.png', 0.9)
+                    x, y = localiza('img/hpBoss.png', 0.9)
                     sk.dano()
                     sk.defesa()
                     sk.potar()
@@ -61,7 +61,7 @@ def killBoss(bm=""):
         hp = 1
         while hp == 1:
             try:
-                x, y = localiza('img\\hpBoss.png', 0.9)
+                x, y = localiza('img/hpBoss.png', 0.9)
                 sk.dano()
             except ImageNotFoundException:
                 print(f"Mob morto.")
@@ -71,7 +71,7 @@ def killGate():
     hp = 1
     while hp == 1:
         try:
-            x, y = localiza('img\\arena_7\\hpPortao.png', 0.9)
+            x, y = localiza('img/arena_7/hpPortao.png', 0.9)
             sk.dano()
         except ImageNotFoundException:
             print(f"Portao morto.")
@@ -134,7 +134,7 @@ def play():
     mobsVivos = True
     while mobsVivos:
         try:
-            x, y = localiza('img\\hpBoss.png', 0.9, minsearch=1)
+            x, y = localiza('img/hpBoss.png', 0.9, minsearch=1)
             sk.over()
             killBoss('bm2')
             mobsVivos = False
@@ -147,7 +147,7 @@ def play():
     bau = True
     while bau:
         try:
-            x, y = localiza('img\\arena_7\\bau_legendario.png', 0.9, minsearch=1)
+            x, y = localiza('img/arena_7/bau_legendario.png', 0.9, minsearch=1)
             print("Baú encontrado.")
             bau = False
         except ImageNotFoundException:

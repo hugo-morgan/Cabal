@@ -26,7 +26,7 @@ def killBoss(bm=""):
 
             if tempo_bm <= 80.00:
                 try:
-                    x, y = localiza('img\\hpBoss.png', 0.9)
+                    x, y = localiza('img/hpBoss.png', 0.9)
                     sk.bm2_atack()
                     sk.defesa()
                     sk.potar()
@@ -41,7 +41,7 @@ def killBoss(bm=""):
                 bm2 = False
                 print("BM2 finalizada")
                 try:
-                    x, y = localiza('img\\hpBoss.png', 0.9)
+                    x, y = localiza('img/hpBoss.png', 0.9)
                     sk.dano()
                     sk.defesa()
                     sk.potar()
@@ -51,7 +51,7 @@ def killBoss(bm=""):
 
             else:
                 try:
-                    x, y = localiza('img\\hpBoss.png', 0.9)
+                    x, y = localiza('img/hpBoss.png', 0.9)
                     sk.dano()
                     sk.defesa()
                     sk.potar()
@@ -62,7 +62,7 @@ def killBoss(bm=""):
         hp = 1
         while hp == 1:
             try:
-                x, y = localiza('img\\hpBoss.png', 0.9)
+                x, y = localiza('img/hpBoss.png', 0.9)
                 sk.dano()
             except ImageNotFoundException:
                 print(f"Mob morto.")
@@ -72,7 +72,7 @@ def killGate():
     hp = 1
     while hp == 1:
         try:
-            x, y = localiza('img\\hpPortao.png', 0.9)
+            x, y = localiza('img/hpPortao.png', 0.9)
             sk.dano()
         except ImageNotFoundException:
             print(f"Portao morto.")
@@ -128,25 +128,25 @@ def play():
 
     py.moveTo(960, 0)
     try:
-        x, y = localiza('img\\dxd_gelo\\ref1.png', 0.85)
+        x, y = localiza('img/dxd_gelo/ref1.png', 0.85)
         clickE(x, y)
         sleep(1)
     except ImageNotFoundException:
         try:
-            x, y = localiza('img\\dxd_gelo\\ref1_1.png', 0.85)
+            x, y = localiza('img/dxd_gelo/ref1_1.png', 0.85)
             clickE(x, y)
             sleep(1)
         except ImageNotFoundException:
             quit()
     py.moveTo(960, 0)
     try:
-        x, y = localiza('img\\dxd_gelo\\1pilar.png', 0.8)
+        x, y = localiza('img/dxd_gelo/1pilar.png', 0.8)
         print("Encontrou 1 Pilar")
         clickE(x, y)
         sleep(1)
     except ImageNotFoundException:
         try:
-            x, y = localiza('img\\dxd_gelo\\1_0pilar.png', 0.9)
+            x, y = localiza('img/dxd_gelo/1_0pilar.png', 0.9)
             print("Encontrou 1 Pilar")
             clickE(x, y)
             sleep(1)
@@ -185,7 +185,7 @@ def play():
     mobsVivos = True
     while mobsVivos:
         try:
-            x, y = localiza('img\\hpBoss.png', 0.9, minsearch=2)
+            x, y = localiza('img/hpBoss.png', 0.9, minsearch=2)
             sk.over()
             killBoss('bm2')
             clickD(192, 116)  # Desliga BM
@@ -207,12 +207,12 @@ def play():
 
     py.moveTo(960, 0)
     try:
-        x, y = localiza('img\\dxd_gelo\\mancha.png', 0.85)
+        x, y = localiza('img/dxd_gelo/mancha.png', 0.85)
         py.moveTo(x, y + 50)
         sk.esquiva()
     except ImageNotFoundException:
         try:
-            x, y = localiza('img\\dxd_gelo\\mancha1.png', 0.85)
+            x, y = localiza('img/dxd_gelo/mancha1.png', 0.85)
             py.moveTo(x, y + 40)
             sk.esquiva()
         except ImageNotFoundException:
@@ -221,43 +221,43 @@ def play():
 
     py.moveTo(960, 0)
     try:
-        x, y = localiza('img\\dxd_gelo\\2pilar.png', 0.8)
+        x, y = localiza('img/dxd_gelo/2pilar.png', 0.8)
         print("Encontrou 2 Pilar")
         clickE(x, y)
         sleep(2)
     except ImageNotFoundException:
         try:
-            x, y = localiza('img\\dxd_gelo\\2_0pilar.png', 0.8)
+            x, y = localiza('img/dxd_gelo/2_0pilar.png', 0.8)
             print("Encontrou 2 Pilar")
             clickE(x, y)
             sleep(2)
         except ImageNotFoundException:
             try:
-                x, y = localiza('img\\dxd_gelo\\2_1pilar.png', 0.8)
+                x, y = localiza('img/dxd_gelo/2_1pilar.png', 0.8)
                 print("Encontrou 2 Pilar")
                 clickE(x, y)
                 sleep(2)
             except ImageNotFoundException:
                 try:
-                    x, y = localiza('img\\dxd_gelo\\2_2pilar.png', 0.8)
+                    x, y = localiza('img/dxd_gelo/2_2pilar.png', 0.8)
                     print("Encontrou 2 Pilar")
                     clickE(x, y)
                     sleep(2)
                 except ImageNotFoundException:
                     try:
-                        x, y = localiza('img\\dxd_gelo\\2_3pilar.png', 0.8)
+                        x, y = localiza('img/dxd_gelo/2_3pilar.png', 0.8)
                         print("Encontrou 2 Pilar")
                         clickE(x, y)
                         sleep(2)
                     except ImageNotFoundException:
                         try:
-                            x, y = localiza('img\\dxd_gelo\\2_4pilar.png', 0.8)
+                            x, y = localiza('img/dxd_gelo/2_4pilar.png', 0.8)
                             print("Encontrou 2 Pilar")
                             clickE(x, y)
                             sleep(2)
                         except ImageNotFoundException:
                             try:
-                                x, y = localiza('img\\dxd_gelo\\2_5pilar.png', 0.8)
+                                x, y = localiza('img/dxd_gelo/2_5pilar.png', 0.8)
                                 print("Encontrou 2 Pilar")
                                 clickE(x, y)
                                 sleep(2)
@@ -268,7 +268,7 @@ def play():
 
     py.moveTo(960, 0)
     try:
-        x, y = localiza('img\\dxd_gelo\\mancha.png', 0.9)
+        x, y = localiza('img/dxd_gelo/mancha.png', 0.9)
         py.moveTo(x, y + 50)
         sk.esquiva()
     except ImageNotFoundException:
@@ -295,31 +295,31 @@ def play():
     sk.esquiva()
     py.moveTo(960, 0)
     try:
-        x, y = localiza('img\\dxd_gelo\\3_0pilar.png', 0.9)
+        x, y = localiza('img/dxd_gelo/3_0pilar.png', 0.9)
         print("Encontrou 1 Pilar")
         clickE(x, y)
         sleep(2)
     except ImageNotFoundException:
         try:
-            x, y = localiza('img\\dxd_gelo\\3_1pilar.png', 0.9)
+            x, y = localiza('img/dxd_gelo/3_1pilar.png', 0.9)
             print("Encontrou 2 Pilar")
             clickE(x, y)
             sleep(2)
         except ImageNotFoundException:
             try:
-                x, y = localiza('img\\dxd_gelo\\3_2pilar.png', 0.9)
+                x, y = localiza('img/dxd_gelo/3_2pilar.png', 0.9)
                 print("Encontrou 2 Pilar")
                 clickE(x, y)
                 sleep(2)
             except ImageNotFoundException:
                 try:
-                    x, y = localiza('img\\dxd_gelo\\3_3pilar.png', 0.9)
+                    x, y = localiza('img/dxd_gelo/3_3pilar.png', 0.9)
                     print("Encontrou 2 Pilar")
                     clickE(x, y)
                     sleep(2)
                 except ImageNotFoundException:
                     try:
-                        x, y = localiza('img\\dxd_gelo\\3_4pilar.png', 0.9)
+                        x, y = localiza('img/dxd_gelo/3_4pilar.png', 0.9)
                         print("Encontrou 2 Pilar")
                         clickE(x, y)
                         sleep(2)

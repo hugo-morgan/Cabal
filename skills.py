@@ -2,7 +2,16 @@ import pydirectinput as pdi
 import pyautogui as py
 from pyautogui import ImageNotFoundException
 import time
+import sys, os
 
+
+def resource_path(relative_path):
+    """ Get absolute path to resource, works for dev and for PyInstaller """
+    base_path = getattr(
+        sys,
+        '_MEIPASS',
+        os.path.dirname(os.path.abspath(__file__)))
+    return os.path.join(base_path, relative_path)
 def clickE(x, y):
     py.moveTo(x, y, duration=0.1)
     py.click(x, y, button="left")
@@ -28,8 +37,8 @@ def potar():
 
 def auto_pot():
     try:
-        imagem = "img\\auto_pot.png"
-        dados = py.locateOnScreen(image=imagem, minSearchTime=2, confidence=0.9, grayscale=False)
+        imagem = "img/auto_pot.png"
+        dados = py.locateOnScreen(image=str(resource_path(imagem)), minSearchTime=2, confidence=0.9, grayscale=False)
         dados_ponto = py.center(dados)
         x, y = dados_ponto
         clickD(749, 962)

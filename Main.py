@@ -586,21 +586,23 @@ botao_dg.place(x=370, y=100)
 
 configs = custom.CTkTextbox(janela, activate_scrollbars=True, width=250, height=120)
 configs.place(x=540, y=100)
-config_text = """Definir configurações gerais para o macro funcionar: 
-1) Fechar janela do chat.
-2) Visao: passaro
-3) Botao home: selecionar personagem proprio
-4) Desabilitar barra de hp monstro
-5) Ativar barra de hp própria
-6) Ataques: botões 1~4
-7) Buffs atk: botao 5~8, sendo o botao 5 o buff que possui animação(tempo de lancamento).
-8) Recuar: botao 9
-9) Deslizar: botao 0
-10) Buff def: botao -
-11) Pot de hp: slot alt + 1
-12) Choque arcano: slot alt + 0
-13) BM2: slot alt + -
-14) ATK normal: slot alt + -"""
+config_text = """Definir configurações gerais para o macro funcionar:
+1) Não mova a janela do macro. (Caso tenha movido, feche e abra novamente o programa) 
+2) Feche a janela do chat.
+3) Visao: passaro
+4) Modo janela
+5) Botao home: selecionar personagem proprio
+6) Desabilitar barra de hp monstro
+7) Ativar barra de hp própria
+8) Ataques: botões 1~4
+9) Buffs atk: botao 5~8, sendo o botao 5 o buff que possui animação(tempo de lancamento).
+10) Recuar: botao 9
+11) Deslizar: botao 0
+12) Buff def: botao -
+13) Pot de hp: slot alt + 1
+14) Choque arcano: slot alt + 0
+15) BM2: slot alt + -
+16) ATK normal: slot alt + -"""
 configs.insert("0.0", config_text)
 configs.configure(state="disabled")
 
