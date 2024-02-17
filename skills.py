@@ -56,7 +56,7 @@ def over():
     time.sleep(1)
     pdi.press('6')
     pdi.press('7')
-    pdi.press('8')
+    pdi.press('8', presses=2, interval=0.5)
 def esquiva():
     pdi.press('9')
     time.sleep(1)

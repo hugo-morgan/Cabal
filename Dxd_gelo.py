@@ -185,6 +185,7 @@ def play():
 
     clickE(295, 176)
     pdi.press('z')
+    sk.aproximar()
     killBoss()
 
     py.moveTo(960, 0)
@@ -247,7 +248,6 @@ def play():
     while mobsVivos:
         try:
             x, y = localiza('img/hpBoss.png', 0.9, minsearch=2)
-            sk.over()
             killBoss('bm2')
             clickD(192, 116)  # Desliga BM
             sleep(1)
@@ -344,6 +344,7 @@ def play():
     pdi.press('z')
     pdi.press('3')
     sleep(3)
+    sk.over()
     killBoss()
 
     # bau

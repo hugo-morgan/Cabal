@@ -64,6 +64,8 @@ def captar_mouse():
             mousepos = [x, y, 'sk.desliza()']
             script.append(mousepos)
             sleep(1)
+# Colocar aqui o if do click do mouse
+
 
         if kb.is_pressed('shift'):
             quit = True
@@ -83,6 +85,9 @@ def executar_script(script):
         if _[2] == 'sk.esquiva()':
             py.moveTo(x, y)
             sk.esquiva()
+        if _[2] == 'clickE':
+            clickE(x, y)
+
 
 
 script = captar_mouse()
