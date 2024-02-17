@@ -207,7 +207,7 @@ def play():
             sk.dano()
         except ImageNotFoundException:
             try:
-                sleep(3)
+                sleep(5)
                 pdi.press('z')
                 x, y = localiza('img/hpPortao.png', 0.9)
                 sk.dano()
@@ -235,7 +235,7 @@ def play():
             sk.dano()
         except ImageNotFoundException:
             try:
-                sleep(3)
+                sleep(5)
                 pdi.press('z')
                 x, y = localiza('img/hpPortao.png', 0.9)
                 sk.dano()
@@ -277,7 +277,7 @@ def play():
     clickE(969, 461)
     missao()
 
-    sleep(5)
+    sleep(10)
     hp = 1
     while hp == 1:
         try:

@@ -27,7 +27,10 @@ def clickD(x, y):
     py.click(x, y, button="right")
     time.sleep(1)
 
-#DU
+def moto():
+    hotkey('alt','7')
+    time.sleep(3)
+
 def dano():
     pdi.press('1')
     pdi.press('2')

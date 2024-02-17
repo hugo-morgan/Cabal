@@ -48,7 +48,7 @@ def clickE(x, y):
     py.click(x, y, button="left")
     sleep(1)
 
-
+import mouse
 def captar_mouse():
     script = []
     quit = False
@@ -65,6 +65,17 @@ def captar_mouse():
             script.append(mousepos)
             sleep(1)
 # Colocar aqui o if do click do mouse
+        if kb.is_pressed('.'):
+            x, y = py.position()
+            mousepos = [x, y, 'drag']
+            script.append(mousepos)
+            sleep(0.3)
+        if kb.is_pressed('ctrl'):
+            x, y = py.position()
+            mousepos = [x, y, 'first_drag']
+            script.append(mousepos)
+            sleep(0.3)
+
 
 
         if kb.is_pressed('shift'):
@@ -85,9 +96,24 @@ def executar_script(script):
         if _[2] == 'sk.esquiva()':
             py.moveTo(x, y)
             sk.esquiva()
-        if _[2] == 'clickE':
-            clickE(x, y)
+        if _[2] == 'first_drag':
+            py.moveTo(x, y)
+
+        if _[2] == 'drag':
+            py.dragTo(x, y, button='left', duration=0.4)
 
 
 
-script = captar_mouse()
+
+clickE(955, 556)
+
+quit = False
+script = []
+while quit == False:
+
+    py.dragTo()
+
+
+    if kb.is_pressed('shift'):
+        quit = True
+        sleep(1)
