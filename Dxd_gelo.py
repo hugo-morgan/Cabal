@@ -177,6 +177,9 @@ def executar_script(script):
             py.moveTo(x, y)
             sk.esquiva()
 
+        if kb.is_pressed('end'):
+            py.moveTo(0, 0)
+
 
 def play():
     print("entrando dxd gelo")

@@ -1,5 +1,3 @@
-import os
-import subprocess
 import time
 import keyboard as kb
 import customtkinter as custom
@@ -7,11 +5,9 @@ from PIL import Image
 import sys, os
 
 import Dxd_fogo
-import arena_5
-import arena_7
+import arena
 import Dxd_gelo
 import Dxd_trem
-import arena_6
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
@@ -82,6 +78,8 @@ def att(x, texto):
 def iniciar(dg):
     i = 0
     console.delete("0.0", "end")
+############################################################################################
+############################################################################################
     if dg == "Arena 7":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
                                                  font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
@@ -125,7 +123,7 @@ def iniciar(dg):
             console.see("end")
             console.configure(state="disabled")
 
-            arena_7.play()
+            arena.play('7')
             restante = numero_entradas - i - 1
             if restante > 0:
                 console.configure(state="normal")
@@ -159,6 +157,7 @@ def iniciar(dg):
                 janela.focus_force()
             i += 1
 ###############################################################################################################################
+############################################################################################
     if dg == "Dx desperta gelo":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
                                                  font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
@@ -235,6 +234,7 @@ def iniciar(dg):
                 janela.focus_force()
             i += 1
 #################################################################################################################################
+############################################################################################
     if dg == "Dx desperta trem":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
                                                  font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
@@ -311,6 +311,7 @@ def iniciar(dg):
                 janela.focus_force()
             i += 1
 ###################################################################################################################################
+############################################################################################
     if dg == "Arena 6":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
                                                  font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
@@ -354,7 +355,7 @@ def iniciar(dg):
             console.see("end")
             console.configure(state="disabled")
 
-            arena_6.play()
+            arena.play('6')
             restante = numero_entradas - i - 1
             if restante > 0:
                 console.configure(state="normal")
@@ -386,6 +387,7 @@ def iniciar(dg):
                 janela.focus_force()
             i += 1
 #################################################################################################################
+############################################################################################
     if dg == "Dx desperta fogo":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
                                                  font=("Arial Bold", 15), button_hover_color="#fc6603", button_fg_color="#fc6603")
@@ -432,7 +434,7 @@ def iniciar(dg):
             console.configure(state="disabled")
 
             Dxd_fogo.play()
-            # os.system("python Dxd_fogo.py")
+
             att(console, "\nEm manutenção!")
             restante = numero_entradas - i - 1
             if restante > 0:
@@ -462,6 +464,7 @@ def iniciar(dg):
                 continuar.place(x=120, y=60)
                 janela.focus_force()
             i += 1
+############################################################################################
 ############################################################################################
     if dg == "Arena 5":
         quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
@@ -507,7 +510,7 @@ def iniciar(dg):
             console.configure(state="disabled")
 
             
-            arena_5.play()
+            arena.play('5')
             restante = numero_entradas - i - 1
             if restante > 0:
 
@@ -544,6 +547,255 @@ def iniciar(dg):
                 janela.focus_force()
             i += 1
 ############################################################################################
+############################################################################################
+    if dg == "Arena 4":
+        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
+                                                 font=("Arial Bold", 15), button_hover_color="#fc6603",
+                                                 button_fg_color="#fc6603")
+        posicionar(quantas_entradas, 80, 170)
+        quantas_entradas.geometry("400x150")
+        numero_entradas = quantas_entradas.get_input()
+        try:
+            numero_entradas = int(numero_entradas)
+        except ValueError or TypeError:
+            new_window = custom.CTkToplevel()
+            posicionar(new_window)
+            new_window.title("Erro")
+            new_window.geometry("395x100")
+            new_window.wait_visibility()
+            new_window.grab_set()
+
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.",
+                                   font=("Arial Bold", 15))
+            text.place(x=40, y=20)
+            ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603",
+                                  hover_color="#fc6603", command=lambda: new_window.destroy())
+            ok.place(x=120, y=60)
+
+            console.configure(state="normal")
+            texto = ("\nValor inválido.")
+            console.insert("end", texto)
+            console.see("end")
+            console.configure(state="disabled")
+
+            raise Exception("Valor invalido")
+
+        texto = ("INICIANDO" +
+                 "\n" + "Número de entradas: {}".format(numero_entradas)).ljust(50)
+        console.insert("end", texto)
+        console.see("end")
+
+        time.sleep(3)
+        while i < numero_entradas:
+
+            console.configure(state="normal")
+            texto = ("\nDG número: {}").format(i + 1)
+            console.insert("end", texto)
+            console.see("end")
+            console.configure(state="disabled")
+
+            arena.play('4')
+            restante = numero_entradas - i - 1
+            if restante > 0:
+
+                console.configure(state="normal")
+                texto = "\nRestam {} entradas".format(restante)
+                console.insert("end", texto)
+                console.see("end")
+                console.configure(state="disabled")
+
+            else:
+
+                console.configure(state="normal")
+                texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
+                console.insert("end", texto)
+                console.see("end")
+                console.configure(state="disabled")
+
+                entradas_finalizadas = custom.CTkToplevel()
+                posicionar(entradas_finalizadas)
+                entradas_finalizadas.title("Sucesso")
+                entradas_finalizadas.geometry("375x100")
+                entradas_finalizadas.wait_visibility()
+                entradas_finalizadas.grab_set()
+
+                text = custom.CTkLabel(entradas_finalizadas, text="Todas as entradas foram finalizadas.",
+                                       font=("Arial Bold", 15))
+                text.place(x=60, y=20)
+                continuar = custom.CTkButton(entradas_finalizadas, font=("Arial bold", 13), fg_color="#fc6603",
+                                             hover_color="#fc6603", text="Continuar",
+                                             command=lambda: entradas_finalizadas.destroy())
+                continuar.place(x=120, y=60)
+
+                janela.focus_force()
+            i += 1
+############################################################################################
+############################################################################################
+    if dg == "Arena 4":
+        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
+                                                 font=("Arial Bold", 15), button_hover_color="#fc6603",
+                                                 button_fg_color="#fc6603")
+        posicionar(quantas_entradas, 80, 170)
+        quantas_entradas.geometry("400x150")
+        numero_entradas = quantas_entradas.get_input()
+        try:
+            numero_entradas = int(numero_entradas)
+        except ValueError or TypeError:
+            new_window = custom.CTkToplevel()
+            posicionar(new_window)
+            new_window.title("Erro")
+            new_window.geometry("395x100")
+            new_window.wait_visibility()
+            new_window.grab_set()
+
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.",
+                                   font=("Arial Bold", 15))
+            text.place(x=40, y=20)
+            ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603",
+                                  hover_color="#fc6603", command=lambda: new_window.destroy())
+            ok.place(x=120, y=60)
+
+            console.configure(state="normal")
+            texto = ("\nValor inválido.")
+            console.insert("end", texto)
+            console.see("end")
+            console.configure(state="disabled")
+
+            raise Exception("Valor invalido")
+
+        texto = ("INICIANDO" +
+                 "\n" + "Número de entradas: {}".format(numero_entradas)).ljust(50)
+        console.insert("end", texto)
+        console.see("end")
+
+        time.sleep(3)
+        while i < numero_entradas:
+
+            console.configure(state="normal")
+            texto = ("\nDG número: {}").format(i + 1)
+            console.insert("end", texto)
+            console.see("end")
+            console.configure(state="disabled")
+
+            arena.play('4')
+            restante = numero_entradas - i - 1
+            if restante > 0:
+
+                console.configure(state="normal")
+                texto = "\nRestam {} entradas".format(restante)
+                console.insert("end", texto)
+                console.see("end")
+                console.configure(state="disabled")
+
+            else:
+
+                console.configure(state="normal")
+                texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
+                console.insert("end", texto)
+                console.see("end")
+                console.configure(state="disabled")
+
+                entradas_finalizadas = custom.CTkToplevel()
+                posicionar(entradas_finalizadas)
+                entradas_finalizadas.title("Sucesso")
+                entradas_finalizadas.geometry("375x100")
+                entradas_finalizadas.wait_visibility()
+                entradas_finalizadas.grab_set()
+
+                text = custom.CTkLabel(entradas_finalizadas, text="Todas as entradas foram finalizadas.",
+                                       font=("Arial Bold", 15))
+                text.place(x=60, y=20)
+                continuar = custom.CTkButton(entradas_finalizadas, font=("Arial bold", 13), fg_color="#fc6603",
+                                             hover_color="#fc6603", text="Continuar",
+                                             command=lambda: entradas_finalizadas.destroy())
+                continuar.place(x=120, y=60)
+
+                janela.focus_force()
+            i += 1
+############################################################################################
+############################################################################################
+    if dg == "Arena 3":
+        quantas_entradas = custom.CTkInputDialog(text="Quantas entradas?", title=dg,
+                                                 font=("Arial Bold", 15), button_hover_color="#fc6603",
+                                                 button_fg_color="#fc6603")
+        posicionar(quantas_entradas, 80, 170)
+        quantas_entradas.geometry("400x150")
+        numero_entradas = quantas_entradas.get_input()
+        try:
+            numero_entradas = int(numero_entradas)
+        except ValueError or TypeError:
+            new_window = custom.CTkToplevel()
+            posicionar(new_window)
+            new_window.title("Erro")
+            new_window.geometry("395x100")
+            new_window.wait_visibility()
+            new_window.grab_set()
+
+            text = custom.CTkLabel(new_window, text="O valor digitado deve ser um número inteiro.",
+                                   font=("Arial Bold", 15))
+            text.place(x=40, y=20)
+            ok = custom.CTkButton(new_window, text="Ok", font=("Arial bold", 13), fg_color="#fc6603",
+                                  hover_color="#fc6603", command=lambda: new_window.destroy())
+            ok.place(x=120, y=60)
+
+            console.configure(state="normal")
+            texto = ("\nValor inválido.")
+            console.insert("end", texto)
+            console.see("end")
+            console.configure(state="disabled")
+
+            raise Exception("Valor invalido")
+
+        texto = ("INICIANDO" +
+                 "\n" + "Número de entradas: {}".format(numero_entradas)).ljust(50)
+        console.insert("end", texto)
+        console.see("end")
+
+        time.sleep(3)
+        while i < numero_entradas:
+
+            console.configure(state="normal")
+            texto = ("\nDG número: {}").format(i + 1)
+            console.insert("end", texto)
+            console.see("end")
+            console.configure(state="disabled")
+
+            arena.play('3')
+            restante = numero_entradas - i - 1
+            if restante > 0:
+
+                console.configure(state="normal")
+                texto = "\nRestam {} entradas".format(restante)
+                console.insert("end", texto)
+                console.see("end")
+                console.configure(state="disabled")
+
+            else:
+
+                console.configure(state="normal")
+                texto = "\nTODAS AS ENTRADAS FINALIZADAS\n###########"
+                console.insert("end", texto)
+                console.see("end")
+                console.configure(state="disabled")
+
+                entradas_finalizadas = custom.CTkToplevel()
+                posicionar(entradas_finalizadas)
+                entradas_finalizadas.title("Sucesso")
+                entradas_finalizadas.geometry("375x100")
+                entradas_finalizadas.wait_visibility()
+                entradas_finalizadas.grab_set()
+
+                text = custom.CTkLabel(entradas_finalizadas, text="Todas as entradas foram finalizadas.",
+                                       font=("Arial Bold", 15))
+                text.place(x=60, y=20)
+                continuar = custom.CTkButton(entradas_finalizadas, font=("Arial bold", 13), fg_color="#fc6603",
+                                             hover_color="#fc6603", text="Continuar",
+                                             command=lambda: entradas_finalizadas.destroy())
+                continuar.place(x=120, y=60)
+
+                janela.focus_force()
+            i += 1
+############################################################################################
 
 def escolher_dg(dg):
     if dg == "Arena 7":
@@ -560,6 +812,10 @@ def escolher_dg(dg):
         iniciar("Dx desperta fogo")
     if dg == "Arena 5":
         iniciar("Arena 5")
+    if dg == "Arena 4":
+        iniciar("Arena 4")
+    if dg == "Arena 3":
+        iniciar("Arena 3")
 
 
 # Janela inicial
@@ -580,7 +836,7 @@ texto.place(x=460, y=20)
 # Escolher dg
 botao_dg = custom.CTkOptionMenu(janela, width=150, height=25, fg_color="#fc6603",
                               font=("Arial Bold", 13), text_color="#ffffff", button_color="#fc6603", button_hover_color="#fc6603",
-                              values=["Arena 7", "Arena 6", "Arena 5", "Dx desperta gelo", "Dx desperta trem", "Dx desperta fogo"],
+                              values=["Arena 7", "Arena 6", "Arena 5", "Arena 4","Arena 3", "Dx desperta gelo", "Dx desperta trem", "Dx desperta fogo"],
                               command=lambda _: escolher_dg(botao_dg.get()))
 botao_dg.place(x=370, y=100)
 

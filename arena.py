@@ -6,11 +6,6 @@ import pydirectinput as pdi
 import skills as sk
 import sys, os
 import keyboard as kb
-def hotkey(tecla1, tecla2):
-    pdi.keyDown(tecla1)
-    pdi.keyDown(tecla2)
-    pdi.keyUp(tecla2)
-    pdi.keyUp(tecla1)
 
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
@@ -19,6 +14,13 @@ def resource_path(relative_path):
         '_MEIPASS',
         os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
+
+def hotkey(tecla1, tecla2):
+    pdi.keyDown(tecla1)
+    pdi.keyDown(tecla2)
+    pdi.keyUp(tecla2)
+    pdi.keyUp(tecla1)
+
 def killBoss(bm=""):
     if bm == 'bm2': # 90s de BM2
         sk.ligar_bm2()
@@ -83,6 +85,7 @@ def killGate():
             print(f"Portao morto.")
             hp = 0
 
+
 def localiza(imagem, x):
     dados = py.locateOnScreen(image=imagem, minSearchTime=5, confidence=x, grayscale=True)
     dados_ponto = py.center(dados)
@@ -92,11 +95,13 @@ def localiza(imagem, x):
         py.moveTo(0, 0)
     return x, y
 
+
 def missao():
     i = 0
     while i < 6:
         pdi.press('space')
         i += 1
+
 
 def clickE(x, y):
     py.moveTo(x, y, duration=0.1)
@@ -120,15 +125,39 @@ def executar_script(script):
             py.moveTo(x, y)
             sk.esquiva()
 
-def play():
+        if kb.is_pressed('end'):
+            sleep(0.5)
+            py.moveTo(0, 0)
+
+def play(arena):
+
+    texto = "\nEntrando arena 7"
+
 
     clickE(955, 556)  # click personagem
 
     clickE(730, 270)
     sleep(3)
-    clickE(706, 291)
+
+    if arena == '7':
+        texto = "\nEntrando arena 7"
+        clickE(737, 328)
+    if arena == '6':
+        texto = "\nEntrando arena 6"
+        clickE(724, 309)
+    if arena == '5':
+        texto = "\nEntrando arena 5"
+        clickE(706, 291)
+    if arena == '4':
+        texto = "\nEntrando arena 4"
+        clickE(706, 270)
+    if arena == '3':
+        texto = "\nEntrando arena 3"
+        clickE(706, 251)
+
     clickE(1082, 679)
     sleep(2)
+
     clickE(850, 703)  # inicia dg
 
     anda_portao = [[1347, 283, 'sk.esquiva()'], [1051, 174, 'sk.desliza()'], [1566, 279, 'sk.esquiva()'], [1437, 204, 'sk.desliza()'], [1683, 344, 'sk.esquiva()'], [1263, 293, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [315, 282, 'sk.esquiva()']]

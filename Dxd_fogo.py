@@ -313,6 +313,10 @@ def executar_script(script):
             sk.esquiva()
 
 
+        if kb.is_pressed('end'):
+            py.moveTo(0, 0)
+
+
 def att(x, texto):
     x.configure(state="normal")
     x.insert("end", texto)

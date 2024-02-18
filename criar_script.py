@@ -1,5 +1,7 @@
 import time
 from time import sleep
+
+import pyautogui
 import pyautogui as py
 from pyautogui import ImageNotFoundException
 import pydirectinput as pdi
@@ -105,9 +107,19 @@ def executar_script(script):
             py.dragTo(x, y, button='left', duration=0.4)
 
 
+        if kb.is_pressed('end'):
+            py.moveTo(0, 0)
+
+
 
 
 clickE(955, 556)
-if kb.is_pressed('end'):
-    sleep(0.5)
-    py.moveTo(0, 0)
+anda_portao = [[1347, 283, 'sk.esquiva()'], [1051, 174, 'sk.desliza()'], [1566, 279, 'sk.esquiva()'], [1437, 204, 'sk.desliza()'], [1683, 344, 'sk.esquiva()'], [1263, 293, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [315, 282, 'sk.esquiva()']]
+try:
+    while True:
+        print("oi")
+        if kb.is_pressed('end'):
+            py.moveTo(0, 0)
+        sleep(1)
+except pyautogui.FailSafeException:
+    print("encerrado")

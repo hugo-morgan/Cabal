@@ -14,6 +14,7 @@ def hotkey(tecla1, tecla2):
     pdi.keyUp(tecla2)
     pdi.keyUp(tecla1)
 
+
 def resource_path(relative_path):
     """ Get absolute path to resource, works for dev and for PyInstaller """
     base_path = getattr(
@@ -21,6 +22,8 @@ def resource_path(relative_path):
         '_MEIPASS',
         os.path.dirname(os.path.abspath(__file__)))
     return os.path.join(base_path, relative_path)
+
+
 def killBoss(bm=""):
     if bm == 'bm2':  # 90s de BM2
         sk.ligar_bm2()
@@ -75,6 +78,7 @@ def killBoss(bm=""):
             except ImageNotFoundException:
                 print(f"Mob morto.")
                 hp = 0
+
 
 def killBoss1(bm=""):
     if bm == 'bm2':  # 90s de BM2
@@ -131,6 +135,7 @@ def killBoss1(bm=""):
                 print(f"Mob morto.")
                 hp = 0
 
+
 def killGate():
     hp = 1
     while hp == 1:
@@ -183,6 +188,9 @@ def executar_script(script):
             py.moveTo(x, y)
             sk.esquiva()
 
+        if kb.is_pressed('end'):
+            py.moveTo(0, 0)
+
 
 def play():
     print("entrando dxd trem")
@@ -192,10 +200,10 @@ def play():
     sleep(3)
     clickE(1308, 419)
     sleep(3)
-    clickE(1337, 271) # ele vai clicar +2 vezes pra ter certeza que nao tem mob
+    clickE(1337, 271)  # ele vai clicar +2 vezes pra ter certeza que nao tem mob
     clickE(736, 306)
     clickE(1068, 681)
-    clickE(848, 703) # Inicia dg
+    clickE(848, 703)  # Inicia dg
 
     script = [[1035, 276, 'sk.esquiva()'], [1014, 338, 'sk.desliza()']]
     executar_script(script)
@@ -219,7 +227,9 @@ def play():
                 print(f"Mobs mortos.")
                 hp = 0
 
-    script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'], [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'], [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
+    script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'],
+              [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'],
+              [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
     executar_script(script)
 
     clickE(917, 344)
@@ -247,7 +257,9 @@ def play():
                 print(f"Mobs mortos.")
                 hp = 0
 
-    script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'], [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'], [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
+    script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'],
+              [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'],
+              [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
     executar_script(script)
 
     clickE(917, 344)
@@ -271,7 +283,9 @@ def play():
     sleep(1)
     pdi.press('space')
 
-    script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'], [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'], [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
+    script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'],
+              [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'],
+              [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
     executar_script(script)
     clickE(917, 344)
     missao()
@@ -300,7 +314,9 @@ def play():
                 print(f"Mobs mortos.")
                 hp = 0
 
-    script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'], [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'], [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
+    script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'],
+              [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'],
+              [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
     executar_script(script)
 
     clickE(917, 344)
@@ -311,7 +327,9 @@ def play():
     clickE(969, 461)
     missao()
 
-    script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'], [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'], [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
+    script = [[624, 607, 'sk.esquiva()'], [624, 608, 'sk.desliza()'], [624, 608, 'sk.esquiva()'],
+              [1245, 279, 'sk.desliza()'], [877, 344, 'sk.esquiva()'], [1139, 293, 'sk.desliza()'],
+              [727, 310, 'sk.esquiva()'], [1078, 292, 'sk.desliza()']]
     executar_script(script)
 
     bossNotFound = True
