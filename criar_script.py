@@ -113,13 +113,13 @@ def executar_script(script):
 
 
 
-clickE(955, 556)
-anda_portao = [[1347, 283, 'sk.esquiva()'], [1051, 174, 'sk.desliza()'], [1566, 279, 'sk.esquiva()'], [1437, 204, 'sk.desliza()'], [1683, 344, 'sk.esquiva()'], [1263, 293, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [315, 282, 'sk.esquiva()']]
-try:
-    while True:
-        print("oi")
-        if kb.is_pressed('end'):
-            py.moveTo(0, 0)
-        sleep(1)
-except pyautogui.FailSafeException:
-    print("encerrado")
+# clickE(955, 556)
+# anda_portao = [[1347, 283, 'sk.esquiva()'], [1051, 174, 'sk.desliza()'], [1566, 279, 'sk.esquiva()'], [1437, 204, 'sk.desliza()'], [1683, 344, 'sk.esquiva()'], [1263, 293, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [175, 295, 'sk.esquiva()'], [175, 295, 'sk.desliza()'], [315, 282, 'sk.esquiva()']]
+# try:
+#     while True:
+#         print("oi")
+#         if kb.is_pressed('end'):
+#             py.moveTo(0, 0)
+#         sleep(1)
+# except pyautogui.FailSafeException:
+#     print("encerrado")
