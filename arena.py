@@ -22,7 +22,7 @@ def hotkey(tecla1, tecla2):
     pdi.keyUp(tecla1)
 
 def killBoss(bm=""):
-    if bm == 'bm2': # 90s de BM2
+    if bm == 'bm2':  # 90s de BM2
         sk.ligar_bm2()
         start = time.time()
         hp = 1
@@ -45,7 +45,7 @@ def killBoss(bm=""):
                     hp = 0
 
             elif tempo_bm > 80.00 and bm2 == True:
-                clickD(192,116) # Desliga BM
+                clickD(192, 116)  # Desliga BM
                 bm2 = False
                 print("BM2 finalizada")
                 try:
@@ -56,6 +56,7 @@ def killBoss(bm=""):
                 except ImageNotFoundException:
                     print(f"Mob morto.")
                     hp = 0
+
             else:
                 try:
                     x, y = localiza('img/hpBoss.png', 0.9)
@@ -65,6 +66,50 @@ def killBoss(bm=""):
                 except ImageNotFoundException:
                     print(f"Mob morto.")
                     hp = 0
+    elif bm == 'bm3':
+        sk.ligar_bm3()
+        start = time.time()
+        hp = 1
+        bm3 = True
+        print("BM3 ativa")
+        while hp == 1:
+            end = time.time()
+            tempo_bm = end - start
+
+            if tempo_bm <= 80.00:
+                try:
+                    x, y = localiza('img/hpBoss.png', 0.9)
+                    sk.bm3_atack()
+                    sk.defesa()
+                    sk.potar()
+                except ImageNotFoundException:
+                    print(f"Mob morto.")
+                    clickD(192, 116)  # Desliga BM
+                    bm3 = False
+                    hp = 0
+
+            elif tempo_bm > 80.00 and bm3 == True:
+                clickD(192, 116)  # Desliga BM
+                bm3 = False
+                print("BM3 finalizada")
+                try:
+                    x, y = localiza('img/hpBoss.png', 0.9)
+                    sk.dano()
+                    sk.defesa()
+                    sk.potar()
+                except ImageNotFoundException:
+                    print(f"Mob morto.")
+                    hp = 0
+
+                else:
+                    try:
+                        x, y = localiza('img/hpBoss.png', 0.9)
+                        sk.dano()
+                        sk.defesa()
+                        sk.potar()
+                    except ImageNotFoundException:
+                        print(f"Mob morto.")
+                        hp = 0
     else:
         hp = 1
         while hp == 1:
@@ -128,7 +173,7 @@ def executar_script(script):
             sleep(0.5)
             py.moveTo(0, 0)
 
-def play(arena):
+def play(arena, boss=''):
 
     texto = "\nEntrando arena 7"
 
@@ -173,7 +218,8 @@ def play(arena):
         try:
             x, y = localiza('img/hpBoss.png', 0.9, minsearch=1)
             sk.over()
-            killBoss('bm2')
+            # killBoss(boss)
+            killBoss()
             mobsVivos = False
         except ImageNotFoundException:
             print("Mobs vivos ainda!")
