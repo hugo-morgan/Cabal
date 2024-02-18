@@ -4,7 +4,9 @@ import pyautogui as py
 from pyautogui import ImageNotFoundException
 import pydirectinput as pdi
 import skills as sk
-import sys, os
+import sys
+import os
+import keyboard as kb
 
 
 def hotkey(tecla1, tecla2):
@@ -134,10 +136,13 @@ def killGate():
             hp = 0
 
 
-def localiza(imagem, x, minsearch=5):
-    dados = py.locateOnScreen(image=resource_path(imagem), minSearchTime=minsearch, confidence=x, grayscale=True)
+def localiza(imagem, x):
+    dados = py.locateOnScreen(image=imagem, minSearchTime=5, confidence=x, grayscale=True)
     dados_ponto = py.center(dados)
     x, y = dados_ponto
+    if kb.is_pressed('end'):
+        sleep(0.5)
+        py.moveTo(0, 0)
     return x, y
 
 

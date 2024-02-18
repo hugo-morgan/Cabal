@@ -6,7 +6,6 @@ import pydirectinput as pdi
 import skills as sk
 import keyboard as kb
 
-
 def killBoss():
     hp = 1
     while hp == 1:
@@ -33,6 +32,9 @@ def localiza(imagem, x):
     dados = py.locateOnScreen(image=imagem, minSearchTime=5, confidence=x, grayscale=True)
     dados_ponto = py.center(dados)
     x, y = dados_ponto
+    if kb.is_pressed('end'):
+        sleep(0.5)
+        py.moveTo(0, 0)
     return x, y
 
 
@@ -106,14 +108,6 @@ def executar_script(script):
 
 
 clickE(955, 556)
-
-quit = False
-script = []
-while quit == False:
-
-    py.dragTo()
-
-
-    if kb.is_pressed('shift'):
-        quit = True
-        sleep(1)
+if kb.is_pressed('end'):
+    sleep(0.5)
+    py.moveTo(0, 0)

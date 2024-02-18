@@ -3,6 +3,7 @@ import pyautogui as py
 from pyautogui import ImageNotFoundException
 import time
 import sys, os
+import keyboard as kb
 
 def hotkey(tecla1, tecla2):
     pdi.keyDown(tecla1)
@@ -29,6 +30,9 @@ def clickD(x, y):
 
 def moto():
     hotkey('alt','7')
+    if kb.is_pressed('end'):
+        time.sleep(0.5)
+        py.moveTo(0, 0)
     time.sleep(3)
 
 def dano():
@@ -37,6 +41,9 @@ def dano():
     pdi.press('3')
     pdi.press('4')
     pdi.press('space')
+    if kb.is_pressed('end'):
+        time.sleep(0.5)
+        py.moveTo(0, 0)
 
 def defesa():
     pdi.press('-')
@@ -60,6 +67,9 @@ def over():
     pdi.press('6')
     pdi.press('7')
     pdi.press('8', presses=2, interval=0.5)
+    if kb.is_pressed('end'):
+        time.sleep(0.5)
+        py.moveTo(0, 0)
 def esquiva():
     pdi.press('9')
     time.sleep(1)
@@ -76,6 +86,9 @@ def ligar_bm2():
     time.sleep(1)
     hotkey('alt', '-')
     time.sleep(4)
+    if kb.is_pressed('end'):
+        time.sleep(0.5)
+        py.moveTo(0, 0)
 
 def ligar_bm3():
     hotkey('alt', '2')
@@ -83,6 +96,9 @@ def ligar_bm3():
     hotkey('alt', '2')
     time.sleep(1)
     hotkey('alt', '2')
+    if kb.is_pressed('end'):
+        time.sleep(0.5)
+        py.moveTo(0, 0)
 def bm3_atack():
     hotkey('alt', '4')
 
