@@ -34,11 +34,17 @@ def killBoss(bm=""):
 
             if tempo_bm <= 80.00:
                 try:
+                    if kb.is_pressed('end'):
+                        sleep(0.5)
+                        py.moveTo(0, 0)
                     x, y = localiza('img/hpBoss.png', 0.9)
                     sk.bm2_atack()
                     sk.defesa()
                     sk.potar()
                 except ImageNotFoundException:
+                    if kb.is_pressed('end'):
+                        sleep(0.5)
+                        py.moveTo(0, 0)
                     print(f"Mob morto.")
                     clickD(192, 116)  # Desliga BM
                     bm2 = False
@@ -49,21 +55,33 @@ def killBoss(bm=""):
                 bm2 = False
                 print("BM2 finalizada")
                 try:
+                    if kb.is_pressed('end'):
+                        sleep(0.5)
+                        py.moveTo(0, 0)
                     x, y = localiza('img/hpBoss.png', 0.9)
                     sk.dano()
                     sk.defesa()
                     sk.potar()
                 except ImageNotFoundException:
+                    if kb.is_pressed('end'):
+                        sleep(0.5)
+                        py.moveTo(0, 0)
                     print(f"Mob morto.")
                     hp = 0
 
             else:
                 try:
+                    if kb.is_pressed('end'):
+                        sleep(0.5)
+                        py.moveTo(0, 0)
                     x, y = localiza('img/hpBoss.png', 0.9)
                     sk.dano()
                     sk.defesa()
                     sk.potar()
                 except ImageNotFoundException:
+                    if kb.is_pressed('end'):
+                        sleep(0.5)
+                        py.moveTo(0, 0)
                     print(f"Mob morto.")
                     hp = 0
     elif bm == 'bm3':
@@ -78,11 +96,17 @@ def killBoss(bm=""):
 
             if tempo_bm <= 80.00:
                 try:
+                    if kb.is_pressed('end'):
+                        sleep(0.5)
+                        py.moveTo(0, 0)
                     x, y = localiza('img/hpBoss.png', 0.9)
                     sk.bm3_atack()
                     sk.defesa()
                     sk.potar()
                 except ImageNotFoundException:
+                    if kb.is_pressed('end'):
+                        sleep(0.5)
+                        py.moveTo(0, 0)
                     print(f"Mob morto.")
                     clickD(192, 116)  # Desliga BM
                     bm3 = False
@@ -93,30 +117,48 @@ def killBoss(bm=""):
                 bm3 = False
                 print("BM3 finalizada")
                 try:
+                    if kb.is_pressed('end'):
+                        sleep(0.5)
+                        py.moveTo(0, 0)
                     x, y = localiza('img/hpBoss.png', 0.9)
                     sk.dano()
                     sk.defesa()
                     sk.potar()
                 except ImageNotFoundException:
+                    if kb.is_pressed('end'):
+                        sleep(0.5)
+                        py.moveTo(0, 0)
                     print(f"Mob morto.")
                     hp = 0
 
                 else:
                     try:
+                        if kb.is_pressed('end'):
+                            sleep(0.5)
+                            py.moveTo(0, 0)
                         x, y = localiza('img/hpBoss.png', 0.9)
                         sk.dano()
                         sk.defesa()
                         sk.potar()
                     except ImageNotFoundException:
+                        if kb.is_pressed('end'):
+                            sleep(0.5)
+                            py.moveTo(0, 0)
                         print(f"Mob morto.")
                         hp = 0
     else:
         hp = 1
         while hp == 1:
             try:
+                if kb.is_pressed('end'):
+                    sleep(0.5)
+                    py.moveTo(0, 0)
                 x, y = localiza('img/hpBoss.png', 0.9)
                 sk.dano()
             except ImageNotFoundException:
+                if kb.is_pressed('end'):
+                    sleep(0.5)
+                    py.moveTo(0, 0)
                 print(f"Mob morto.")
                 hp = 0
 
@@ -124,9 +166,15 @@ def killGate():
     hp = 1
     while hp == 1:
         try:
+            if kb.is_pressed('end'):
+                sleep(0.5)
+                py.moveTo(0, 0)
             x, y = localiza('img/arena_7/hpPortao.png', 0.9)
             sk.dano()
         except ImageNotFoundException:
+            if kb.is_pressed('end'):
+                sleep(0.5)
+                py.moveTo(0, 0)
             print(f"Portao morto.")
             hp = 0
 
@@ -219,13 +267,17 @@ def play(arena, boss=''):
             x, y = localiza('img/hpBoss.png', 0.9, minsearch=1)
             sk.over()
             # killBoss(boss)
-            killBoss()
+            killBoss('bm2')
             mobsVivos = False
         except ImageNotFoundException:
             print("Mobs vivos ainda!")
             sk.auto_pot()
             pdi.press('z')
             sk.dano()
+            if kb.is_pressed('end'):
+                sleep(0.5)
+                py.moveTo(0, 0)
+
 
     bau = True
     while bau:
